@@ -2,9 +2,11 @@ const header = document.querySelector('.site-header');
 const navToggle = document.querySelector('.nav-toggle');
 const siteNav = document.querySelector('.site-nav');
 const navLinks = Array.from(document.querySelectorAll('.site-nav a'));
+const scrollTopLinks = Array.from(document.querySelectorAll('.scroll-top'));
 const revealItems = document.querySelectorAll('.reveal');
 const sections = Array.from(document.querySelectorAll('main section[id], header[id]'));
 const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+const reduceMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
 
 const closeMenu = () => {
   if (!siteNav || !navToggle) {
@@ -68,6 +70,21 @@ setHeaderState();
 setStaticActiveLink();
 window.addEventListener('scroll', setHeaderState, { passive: true });
 
+scrollTopLinks.forEach((link) => {
+  link.addEventListener('click', (event) => {
+    event.preventDefault();
+
+    window.scrollTo({
+      top: 0,
+      behavior: reduceMotionQuery.matches ? 'auto' : 'smooth'
+    });
+
+    if (window.location.hash) {
+      history.replaceState(null, '', `${window.location.pathname}${window.location.search}`);
+    }
+  });
+});
+
 const sectionObserver = new IntersectionObserver(
   (entries) => {
     entries.forEach((entry) => {
@@ -85,7 +102,11 @@ const sectionObserver = new IntersectionObserver(
   }
 );
 
-revealItems.forEach((item) => sectionObserver.observe(item));
+if (reduceMotionQuery.matches) {
+  revealItems.forEach((item) => item.classList.add('is-visible'));
+} else {
+  revealItems.forEach((item) => sectionObserver.observe(item));
+}
 
 const pageSectionLinks = navLinks.filter((link) => {
   const href = link.getAttribute('href') || '';

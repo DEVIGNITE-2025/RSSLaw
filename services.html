@@ -7,21 +7,16 @@
   <meta name="description" content="Explore the practice areas and legal services offered by RSS Inc.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body class="services-page">
-  <div class="page-shell services-page-shell">
-    <header class="site-header site-header-light" id="top">
-      <div class="container nav-wrap">
-        <a class="brand brand-dark" href="index.html" aria-label="RSS Inc. Home">
-          <span class="brand-mark brand-mark-light" aria-hidden="true">
-            <svg viewBox="0 0 64 64" fill="none" role="presentation">
-              <path d="M8 10h14v44H8z" />
-              <path d="M25 10h14v44H25z" />
-              <path d="M42 10h14v44H42z" />
-              <path d="M8 10l24 18 24-18" />
-            </svg>
+  <div class="page-shell">
+    <header class="site-header" id="top">
+      <div class="container-wide nav-wrap">
+        <a class="brand" href="index.html" aria-label="RSS Inc. Home">
+          <span class="brand-mark" aria-hidden="true">
+            <img src="images/logo.png" alt="">
           </span>
           <span class="brand-copy">
             <strong>RSS Inc.</strong>
@@ -29,13 +24,13 @@
           </span>
         </a>
 
-        <button class="nav-toggle nav-toggle-light" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Toggle navigation">
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Toggle navigation">
           <span></span>
           <span></span>
           <span></span>
         </button>
 
-        <nav class="site-nav site-nav-light" id="site-nav" aria-label="Primary navigation">
+        <nav class="site-nav" id="site-nav" aria-label="Primary navigation">
           <a href="index.html">Home</a>
           <a href="about.html">About Us</a>
           <a href="services.html">Our Services</a>
@@ -45,232 +40,291 @@
     </header>
 
     <main>
-      <section class="page-hero services-hero">
-        <div class="page-hero-overlay"></div>
-        <div class="container page-hero-content reveal fade-up">
-          <span class="section-tag">Practice Areas</span>
-          <h1>Our Services</h1>
-          <p>Modern legal support across regulatory, governance, compliance, investigations, employment, technology, and sector-specific business risk.</p>
+      <section class="page-hero">
+        <div class="container-wide page-hero-grid">
+          <div class="page-hero-copy reveal fade-up">
+            <span class="section-tag">Practice Areas</span>
+            <h1>Our Services</h1>
+            <p class="lead">Modern legal support across regulatory, governance, compliance, investigations, employment, technology, and sector-specific business risk.</p>
+          </div>
+
+          <div class="stack-layout reveal fade-left">
+            <figure class="image-placeholder image-placeholder-dark image-placeholder-compact section-shell">
+              <div class="image-placeholder-media">
+                <span class="placeholder-label">Image Placeholder</span>
+                <div class="placeholder-grid" aria-hidden="true">
+                  <span>Case Review</span>
+                  <span>Advisory Session</span>
+                </div>
+              </div>
+              <figcaption class="image-placeholder-caption">
+                <h3>Services-page practice photography belongs here.</h3>
+                <p>Use real advisory, review, or boardroom imagery that supports the firm's legal expertise.</p>
+                <span class="placeholder-note">Preferred crop: landscape 16:10 or 3:2.</span>
+              </figcaption>
+            </figure>
+
+            <div class="intro-card section-shell">
+              <span class="detail-label">Advisory Scope</span>
+              <h3>Support designed for organisations operating in regulated, evolving, and high-accountability environments.</h3>
+              <p>Our service offering is structured to help clients respond to legal complexity with clarity, discipline, and practical implementation.</p>
+            </div>
+          </div>
         </div>
       </section>
 
-      <section class="services-content section">
-        <div class="container services-layout">
-          <div class="services-main">
-            <article class="service-intro-card card reveal fade-up" id="ai-law">
-              <div class="service-intro-copy">
-                <div class="service-title-row">
-                  <span class="service-badge">01</span>
+      <section class="section">
+        <div class="container">
+          <div class="services-layout">
+            <div class="services-main">
+              <article class="service-intro-card section-shell reveal fade-up" id="ai-law">
+                <div class="service-intro-copy">
+                  <span class="detail-label">01</span>
                   <h2>Artificial Intelligence Law</h2>
+                  <p>AI has become a significant innovation into business and impacts on most sectors. Like the internet, the introduction of AI into all sectors cannot be ignored. Failure to prepare your business or services to accommodate efficiencies and competitive advantage and respond to the risks of AI will have significant impact on business and services.</p>
+                  <p>We advise on the legal and regulatory impact of AI on your business, product development, governance, compliance, and decision making. Our focus remains on practical implementation, ethical oversight, and risk mitigation while maintaining best business practice.</p>
+                  <ul class="service-bullets">
+                    <li>Preparation of AI governance and ethical use of AI.</li>
+                    <li>Identification of AI-generated products.</li>
+                    <li>Consideration of liabilities for the use of AI.</li>
+                    <li>Intellectual property ownership of AI.</li>
+                    <li>The impact of AI on privacy, labour, and consumer protection.</li>
+                  </ul>
                 </div>
-                <p>AI has become a significant innovation into business and impacts on most sectors. Like the internet, the introduction of AI into all sectors cannot be ignored. Failure to prepare your business or services to accommodate efficiencies and competitive advantage and respond to the risks of AI will have significant impact on business and services.</p>
-                <p>We advise on the legal and regulatory impact of AI on your business, product development, governance, compliance, and decision making. Our focus remains on practical implementation, ethical oversight, and risk mitigation while maintaining best business practice.</p>
-                <ul class="service-bullets">
-                  <li>Preparation of AI governance and ethical use of AI.</li>
-                  <li>Identification of AI-generated products.</li>
-                  <li>Consideration of liabilities for the use of AI.</li>
-                  <li>Intellectual property ownership of AI.</li>
-                  <li>The impact of AI on privacy, labour, and consumer protection.</li>
+              </article>
+
+              <article class="service-card section-shell reveal fade-up" id="technology-law">
+                <div class="service-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><path d="M4 6h16v10H4z"></path><path d="M9 18h6"></path><path d="M12 16v2"></path></svg>
+                </div>
+                <div class="service-card-copy">
+                  <h3>Technology, Communications, Payments and Banking Law</h3>
+                  <p>The convergence of technology has resulted in the introduction of products and services that bring together telecommunications, information technology, banking and payments. Our team has extensive knowledge of the operations, regulatory requirements and legal risks that constitute these sectors.</p>
+                  <ul class="service-outline">
+                    <li>Commercial contracts on all aspects of the procurement, development and implementation process.</li>
+                    <li>Negotiation of technology terms with regulators and service providers.</li>
+                    <li>Drafting and reviewing agreements for products and services.</li>
+                    <li>Regulatory and advisory matters for the development of products and services.</li>
+                  </ul>
+                </div>
+              </article>
+
+              <article class="service-card section-shell reveal fade-up" id="banking-law">
+                <div class="service-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><path d="M4 19h16"></path><path d="M7 19V9l5-3 5 3v10"></path><path d="M10 12h4"></path></svg>
+                </div>
+                <div class="service-card-copy">
+                  <h3>Banking and Insurance Law</h3>
+                  <p>Covers legal and regulatory frameworks for banking institutions and insurance companies. We support regulated entities on governance, market conduct, prudential considerations, product design and compliance implementation across the financial sector.</p>
+                </div>
+              </article>
+
+              <article class="service-card section-shell reveal fade-up" id="employment-law">
+                <div class="service-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><path d="M6 20V9l6-4 6 4v11"></path><path d="M4 20h16"></path><path d="M9 13h6"></path></svg>
+                </div>
+                <div class="service-card-copy">
+                  <h3>Pension and Employment Law</h3>
+                  <p>Our team can provide advice on all aspects of employment law including the following:</p>
+                  <ul class="service-outline">
+                    <li>Drafting internal policies and procedures that comply with labour legislation and employment law obligations.</li>
+                    <li>Review of disciplinary hearings, labour disputes and workplace investigations.</li>
+                    <li>Advising on employee benefits and pension related matters.</li>
+                    <li>Taking on all aspects of employment and labour risk.</li>
+                  </ul>
+                </div>
+              </article>
+
+              <article class="service-card section-shell reveal fade-up" id="environment-law">
+                <div class="service-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><path d="M12 2c5 3 8 7 8 11a8 8 0 0 1-16 0c0-4 3-8 8-11z"></path><path d="M10 12c.8.8 1.6 1.2 2 1.2 1.6 0 3-1.4 3-3"></path></svg>
+                </div>
+                <div class="service-card-copy">
+                  <h3>Environmental and Sustainability Law</h3>
+                  <p>Focuses on legal protection for the environment and sustainable development practices. The shifting skill required by Africa has resulted in a key aspect of sustainability becoming a business strategy and determining what good sustainable practice your client can adopt sustainably aligns with effective and easy to implement and create value.</p>
+                  <ul class="service-outline">
+                    <li>Legal and regulatory advice in relation to environmental law.</li>
+                    <li>Guidance on legal and permitting obligations.</li>
+                    <li>Advisory on environmental and sustainability risk.</li>
+                  </ul>
+                </div>
+              </article>
+
+              <article class="service-card section-shell reveal fade-up" id="privacy-law">
+                <div class="service-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><path d="M6 4h12v16H6z"></path><path d="M9 9h6"></path><path d="M9 13h6"></path><path d="M9 17h4"></path></svg>
+                </div>
+                <div class="service-card-copy">
+                  <h3>Data Protection and Privacy Legislation</h3>
+                  <p>Ensures privacy rights and personal handling of personal data in compliance with laws like GDPR. Information is the most valued commodity in most sectors and the Protection of Information legislation protects information dissemination and use.</p>
+                  <ul class="service-outline">
+                    <li>Implementation into privacy regulatory frameworks with local legislation where applicable.</li>
+                    <li>Advice on the collection and processing of personal information.</li>
+                    <li>Creation of policies, manuals and awareness documents.</li>
+                    <li>Compliance audits and practical remediation plans.</li>
+                  </ul>
+                </div>
+              </article>
+
+              <article class="service-card section-shell reveal fade-up" id="compliance-law">
+                <div class="service-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><path d="M5 12.5 9.5 17 19 7.5"></path></svg>
+                </div>
+                <div class="service-card-copy">
+                  <h3>Regulatory and Compliance</h3>
+                  <p>Involves legal adherence to industry regulations, standards, and government requirements. Ensuring that organisations comply with legislative and other legal requirements is an essential aspect of the business, as non-adherence or non-compliance has a direct impact on the viability of the business and the liabilities and punitive measures that can accrue to the business, the Executive and the Board of Directors.</p>
+                  <ul class="service-outline">
+                    <li>Drafting submissions, conducting presentations and engagements with regulators, government departments and parliament on impact of regulation.</li>
+                    <li>Interpretation of the law and policy frameworks and the delivery of practical business risk compliance advice.</li>
+                    <li>Review of regulatory frameworks applicable to target sectors and risk assessment.</li>
+                  </ul>
+                </div>
+              </article>
+
+              <article class="service-card section-shell reveal fade-up" id="investigations-law">
+                <div class="service-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"></circle><path d="M20 20l-4.2-4.2"></path></svg>
+                </div>
+                <div class="service-card-copy">
+                  <h3>Corporate Investigations</h3>
+                  <p>Focuses on legal investigations into corporate misconduct, including fraud and regulatory breaches. We investigate matters and provide practical recommendations that support remediation, governance improvement and accountability.</p>
+                  <p>Legal professional privilege is central to the authenticity of communications between a client and its legal advisors. Any advice or communication between the attorney and client will fall into the ambit of privilege if it is legal advice and can only be waived by the person to whom the advice belongs.</p>
+                </div>
+              </article>
+
+              <article class="service-card section-shell reveal fade-up" id="governance-law">
+                <div class="service-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><path d="M4 19h16"></path><path d="M6 19V8l6-3 6 3v11"></path><path d="M9 12h6"></path></svg>
+                </div>
+                <div class="service-card-copy">
+                  <h3>Governance</h3>
+                  <p>Covers the structures, policies, and rules guiding corporate decision making and accountability. Effective governance frameworks ensure organisations have sufficiently documented and adequately implemented structures between management, the executive and the board.</p>
+                  <ul class="service-outline">
+                    <li>Governance frameworks that align legal requirements and operational needs.</li>
+                    <li>Advice on board oversight, delegated authority and reporting structures.</li>
+                    <li>Development of policies and procedures for improved accountability.</li>
+                  </ul>
+                </div>
+              </article>
+
+              <article class="service-card section-shell reveal fade-up" id="mining-law">
+                <div class="service-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><path d="M6 20l5-9"></path><path d="M13 20l5-9"></path><path d="M9 5l6 4"></path></svg>
+                </div>
+                <div class="service-card-copy">
+                  <h3>Mining Law</h3>
+                  <p>Regulates legal aspects of mineral extraction, environmental impact, and community rights. Mining is one of the most important sectors in South Africa and our support covers licensing, operational compliance, sustainability and engagement with affected communities.</p>
+                  <ul class="service-outline">
+                    <li>Advice on environmental and regulatory approvals.</li>
+                    <li>Drafting policies and standard operating procedures.</li>
+                    <li>Support for stakeholder engagement and compliance management.</li>
+                  </ul>
+                </div>
+              </article>
+
+              <article class="service-card section-shell reveal fade-up" id="anti-bribery-law">
+                <div class="service-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><path d="M7 7h10"></path><path d="M9 7V4h6v3"></path><path d="M12 7v13"></path><path d="M6 20h12"></path></svg>
+                </div>
+                <div class="service-card-copy">
+                  <h3>Anti-Corruption and Anti-Bribery Law</h3>
+                  <p>The rise of regulation which requires mandatory compliance in the area of anti-corruption and anti-bribery law means businesses need clear frameworks, internal controls and training. We provide advice regarding the impact of this legislation in contracts and transactions, and help businesses implement compliant operating models.</p>
+                </div>
+              </article>
+            </div>
+
+            <aside class="services-sidebar reveal fade-left">
+              <div class="sidebar-card section-shell">
+                <h4>Contact</h4>
+                <div class="detail-stack">
+                  <a href="tel:+27115681158">+27 11 568 1158</a>
+                  <a href="mailto:connect@rsslaw.co.za">connect@rsslaw.co.za</a>
+                </div>
+              </div>
+
+              <div class="sidebar-card section-shell">
+                <h4>Information</h4>
+                <div class="detail-stack">
+                  <a href="about.html">About Us</a>
+                  <a href="contact.html">Contact Us</a>
+                </div>
+              </div>
+
+              <div class="sidebar-card section-shell">
+                <h4>Practice Areas</h4>
+                <ul class="services-anchor-list">
+                  <li><a href="#ai-law">Artificial Intelligence Law</a></li>
+                  <li><a href="#technology-law">Technology, Communications, Payments and Banking Law</a></li>
+                  <li><a href="#banking-law">Banking and Insurance Law</a></li>
+                  <li><a href="#employment-law">Pension and Employment Law</a></li>
+                  <li><a href="#environment-law">Environmental and Sustainability Law</a></li>
+                  <li><a href="#privacy-law">Data Protection and Privacy Legislation</a></li>
+                  <li><a href="#compliance-law">Regulatory and Compliance</a></li>
+                  <li><a href="#investigations-law">Corporate Investigations</a></li>
+                  <li><a href="#governance-law">Governance</a></li>
+                  <li><a href="#mining-law">Mining Law</a></li>
+                  <li><a href="#anti-bribery-law">Anti-Corruption and Anti-Bribery Law</a></li>
                 </ul>
               </div>
-            </article>
-
-            <article class="service-band reveal fade-up" id="technology-law">
-              <div class="service-band-icon service-band-icon-light" aria-hidden="true">&#128187;</div>
-              <div class="service-band-copy">
-                <h3>Technology, Communications, Payments and Banking Law</h3>
-                <p>The convergence of technology has resulted in the introduction of products and services that bring together telecommunications, information technology, banking and payments. Our team has extensive knowledge of the operations, regulatory requirements and legal risks that constitute these sectors.</p>
-                <ul class="service-bullets compact">
-                  <li>Commercial contracts on all aspects of the procurement, development and implementation process.</li>
-                  <li>Negotiation of technology terms with regulators and service providers.</li>
-                  <li>Drafting and reviewing agreements for products and services.</li>
-                  <li>Regulatory and advisory matters for the development of products and services.</li>
-                </ul>
-              </div>
-            </article>
-
-            <article class="service-band service-band-muted reveal fade-up" id="banking-law">
-              <div class="service-band-icon" aria-hidden="true">&#10022;</div>
-              <div class="service-band-copy">
-                <h3>Banking and Insurance Law</h3>
-                <p>Covers legal and regulatory frameworks for banking institutions and insurance companies. We support regulated entities on governance, market conduct, prudential considerations, product design and compliance implementation across the financial sector.</p>
-              </div>
-            </article>
-
-            <article class="service-band reveal fade-up" id="employment-law">
-              <div class="service-band-icon service-band-icon-light" aria-hidden="true">&#9878;</div>
-              <div class="service-band-copy">
-                <h3>Pension and Employment law</h3>
-                <p>Our team can provide advice on all aspects of employment law including the following:</p>
-                <ul class="service-bullets compact">
-                  <li>Drafting of internal policies and procedures that comply with the range of employment law including the labour legislation.</li>
-                  <li>Review of disciplinary hearings, labour disputes and workplace investigations.</li>
-                  <li>Advising on employee benefits and pension related matters.</li>
-                  <li>Taking on all aspects of employment and labour risk.</li>
-                </ul>
-              </div>
-            </article>
-
-            <article class="service-band service-band-muted reveal fade-up" id="environment-law">
-              <div class="service-band-icon" aria-hidden="true">&#9711;</div>
-              <div class="service-band-copy">
-                <h3>Environmental and Sustainability Law</h3>
-                <p>Focuses on legal protection for the environment and sustainable development practices. The shifting skill required by Africa has resulted in a key aspect of sustainability becoming a business strategy and determining what good sustainable practice your client can adopt sustainably aligns with effective and easy to implement and create value.</p>
-                <ul class="service-bullets compact">
-                  <li>Legal and regulatory advice in relation to environmental law.</li>
-                  <li>Guidance on legal and permitting obligations.</li>
-                  <li>Advisory on environmental and sustainability risk.</li>
-                </ul>
-              </div>
-            </article>
-
-            <article class="service-band reveal fade-up" id="privacy-law">
-              <div class="service-band-icon service-band-icon-light" aria-hidden="true">&#9723;</div>
-              <div class="service-band-copy">
-                <h3>Data Protection and Privacy Legislation</h3>
-                <p>Ensures privacy rights and personal handling of personal data in compliance with laws like GDPR. Information is the most valued commodity in most sectors and the Protection of Information legislation protects information dissemination and use.</p>
-                <ul class="service-bullets compact">
-                  <li>Implementation into privacy regulatory frameworks with local legislation where applicable.</li>
-                  <li>Advice on the collection and processing of personal information.</li>
-                  <li>Creation of policies, manuals and awareness documents.</li>
-                  <li>Compliance audits and practical remediation plans.</li>
-                </ul>
-              </div>
-            </article>
-
-            <article class="service-band service-band-muted reveal fade-up" id="compliance-law">
-              <div class="service-band-icon" aria-hidden="true">&#10003;</div>
-              <div class="service-band-copy">
-                <h3>Regulatory and Compliance</h3>
-                <p>Involves legal adherence to industry regulations, standards, and government requirements. Ensuring that organisations comply with legislative and other legal requirements is an essential aspect of the business, as non-adherence or non-compliance has a direct impact on the viability of the business and the liabilities and punitive measures that can accrue to the business, the Executive and the Board of Directors.</p>
-                <ul class="service-bullets compact">
-                  <li>We draft submissions, conduct presentations and engagements to regulators, government departments and parliament on impact of regulation.</li>
-                  <li>Interpretation of the law and policy frameworks and the delivery of practical business risk compliance advice.</li>
-                  <li>Review regulatory frameworks applicable to target sectors and risk assessment.</li>
-                </ul>
-              </div>
-            </article>
-
-            <article class="service-band reveal fade-up" id="investigations-law">
-              <div class="service-band-icon service-band-icon-light" aria-hidden="true">&#128269;</div>
-              <div class="service-band-copy">
-                <h3>Corporate Investigations</h3>
-                <p>Focuses on legal investigations into corporate misconduct, including fraud and regulatory breaches. We investigate matters and provide practical recommendations that support remediation, governance improvement and accountability.</p>
-                <p>Legal professional privilege is central to the authenticity of communications between a client and its legal advisors. Any advice or communication between the attorney and client will fall into the ambit of privilege if it is legal advice and can only be waived by the person to whom the advice belongs.</p>
-              </div>
-            </article>
-
-            <article class="service-band service-band-muted reveal fade-up" id="governance-law">
-              <div class="service-band-icon" aria-hidden="true">&#127970;</div>
-              <div class="service-band-copy">
-                <h3>Governance</h3>
-                <p>Covers the structures, policies, and rules guiding corporate decision making and accountability. Effective governance frameworks ensure organisations have sufficiently documented and adequately implemented structures between management, the executive and the board.</p>
-                <ul class="service-bullets compact">
-                  <li>Governance frameworks that align legal requirements and operational needs.</li>
-                  <li>Advice on board oversight, delegated authority and reporting structures.</li>
-                  <li>Development of policies and procedures for improved accountability.</li>
-                </ul>
-              </div>
-            </article>
-
-            <article class="service-band reveal fade-up" id="mining-law">
-              <div class="service-band-icon service-band-icon-light" aria-hidden="true">&#9881;</div>
-              <div class="service-band-copy">
-                <h3>Mining Law</h3>
-                <p>Regulates legal aspects of mineral extraction, environmental impact, and community rights. Mining is one of the most important sectors in South Africa and our support covers licensing, operational compliance, sustainability and engagement with affected communities.</p>
-                <ul class="service-bullets compact">
-                  <li>Advice on environmental and regulatory approvals.</li>
-                  <li>Drafting policies and standard operating procedures.</li>
-                  <li>Support for stakeholder engagement and compliance management.</li>
-                </ul>
-              </div>
-            </article>
-
-            <article class="service-band service-band-muted reveal fade-up" id="anti-bribery-law">
-              <div class="service-band-icon" aria-hidden="true">&#9876;</div>
-              <div class="service-band-copy">
-                <h3>Anti-Corruption and Anti-Bribery Law</h3>
-                <p>The rise of regulation which requires mandatory compliance in the area of anti-corruption and anti-bribery law means businesses need clear frameworks, internal controls and training. We provide advice regarding the impact of this legislation in contracts and transactions, and help businesses implement compliant operating models.</p>
-              </div>
-            </article>
+            </aside>
           </div>
-
-          <aside class="services-sidebar reveal fade-left">
-            <div class="sidebar-card card">
-              <h4>Info Pages</h4>
-              <a href="about.html">About Us</a>
-              <a href="contact.html">Contact Us</a>
-            </div>
-
-            <div class="sidebar-card card">
-              <h4>Contact Details</h4>
-              <a href="tel:+27115681158">+27 11 568 1158</a>
-              <a href="mailto:connect@rsslaw.co.za">connect@rsslaw.co.za</a>
-            </div>
-
-            <div class="sidebar-card card sidebar-list-card">
-              <h4>Practice Area</h4>
-              <a href="#ai-law">Artificial Intelligence Law</a>
-              <a href="#technology-law">Technology, Communications, Payments and Banking Law</a>
-              <a href="#banking-law">Banking and Insurance Law</a>
-              <a href="#employment-law">Pension and Employment law</a>
-              <a href="#environment-law">Environmental and Sustainability Law</a>
-              <a href="#privacy-law">Data Protection and Privacy Legislation</a>
-              <a href="#compliance-law">Regulatory and Compliance</a>
-              <a href="#investigations-law">Corporate Investigations</a>
-              <a href="#governance-law">Governance</a>
-              <a href="#mining-law">Mining Law</a>
-              <a href="#anti-bribery-law">Anti-Corruption and Anti-Bribery Law</a>
-            </div>
-          </aside>
         </div>
       </section>
     </main>
 
-    <footer class="site-footer site-footer-light">
-      <div class="container footer-grid footer-grid-light">
+    <footer class="site-footer">
+      <div class="container-wide footer-grid">
         <div>
-          <h3>CONTACT US</h3>
-          <a href="mailto:connect@rsslaw.co.za">connect@rsslaw.co.za</a>
-          <a href="tel:+27115681158">+27 11 568 1158</a>
+          <h3>Contact</h3>
+          <div class="footer-contact">
+            <a href="mailto:connect@rsslaw.co.za">connect@rsslaw.co.za</a>
+            <a href="tel:+27115681158">+27 11 568 1158</a>
+            <p>Unit 1, Block A, Upper Grayston Office Park, Sandton, South Africa</p>
+          </div>
         </div>
 
         <div>
-          <h3>INFORMATION</h3>
-          <a href="index.html">Home</a>
-          <a href="about.html">About Us</a>
-          <a href="services.html">Our Services</a>
-          <a href="contact.html">Contact</a>
+          <h3>Information</h3>
+          <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="about.html">About Us</a>
+            <a href="services.html">Our Services</a>
+            <a href="contact.html">Contact</a>
+          </div>
         </div>
 
         <div>
-          <h3>POLICIES</h3>
-          <a href="index.html">Terms &amp; Conditions</a>
-          <a href="index.html">Privacy Policy</a>
+          <h3>Policies</h3>
+          <div class="footer-links">
+            <a href="index.html">Terms &amp; Conditions</a>
+            <a href="index.html">Privacy Policy</a>
+          </div>
         </div>
 
-        <div class="footer-brand footer-brand-light">
-          <a class="brand brand-dark footer-brandmark" href="index.html" aria-label="RSS Inc. Home">
-            <span class="brand-mark brand-mark-light" aria-hidden="true">
-              <svg viewBox="0 0 64 64" fill="none" role="presentation">
-                <path d="M8 10h14v44H8z" />
-                <path d="M25 10h14v44H25z" />
-                <path d="M42 10h14v44H42z" />
-                <path d="M8 10l24 18 24-18" />
-              </svg>
+        <div class="footer-brand">
+          <a class="brand" href="index.html" aria-label="RSS Inc. Home">
+            <span class="brand-mark" aria-hidden="true">
+              <img src="images/logo.png" alt="">
             </span>
             <span class="brand-copy">
               <strong>RSS Inc.</strong>
               <small>Legal | Regulatory | Compliance</small>
             </span>
           </a>
-          <p>Registration Number: 2024/622929/21</p>
-          <p>Legal Practice Number: F72676</p>
+          <span class="detail-label">Professional Information</span>
+          <div class="detail-stack">
+            <p>Registration Number: 2024/622929/21</p>
+            <p>Legal Practice Number: F72676</p>
+          </div>
         </div>
       </div>
-      <div class="container footer-bottom footer-bottom-light">
-        <p>&copy; 2024 RSS Inc. All Rights Reserved. Designed &amp; Developed by Pixel Graphics</p>
-        <a class="scroll-top scroll-top-light" href="#top" aria-label="Back to top">&#8593;</a>
+      <div class="container-wide footer-bottom">
+        <p>&copy; 2024 RSS Inc. All Rights Reserved.</p>
+        <a class="scroll-top" href="#top" aria-label="Back to top">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M12 4.75a1.25 1.25 0 0 1 .88.37l4 4a1.25 1.25 0 1 1-1.76 1.76l-1.87-1.87V18a1.25 1.25 0 1 1-2.5 0V9.01l-1.87 1.87a1.25 1.25 0 1 1-1.76-1.76l4-4A1.25 1.25 0 0 1 12 4.75Z"></path>
+          </svg>
+        </a>
       </div>
     </footer>
   </div>

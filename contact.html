@@ -7,21 +7,16 @@
   <meta name="description" content="Contact RSS Inc. for legal, regulatory and compliance support.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body class="contact-page">
-  <div class="page-shell contact-page-shell">
-    <header class="site-header site-header-light" id="top">
-      <div class="container nav-wrap">
-        <a class="brand brand-dark" href="index.html" aria-label="RSS Inc. Home">
-          <span class="brand-mark brand-mark-light" aria-hidden="true">
-            <svg viewBox="0 0 64 64" fill="none" role="presentation">
-              <path d="M8 10h14v44H8z" />
-              <path d="M25 10h14v44H25z" />
-              <path d="M42 10h14v44H42z" />
-              <path d="M8 10l24 18 24-18" />
-            </svg>
+  <div class="page-shell">
+    <header class="site-header" id="top">
+      <div class="container-wide nav-wrap">
+        <a class="brand" href="index.html" aria-label="RSS Inc. Home">
+          <span class="brand-mark" aria-hidden="true">
+            <img src="images/logo.png" alt="">
           </span>
           <span class="brand-copy">
             <strong>RSS Inc.</strong>
@@ -29,13 +24,13 @@
           </span>
         </a>
 
-        <button class="nav-toggle nav-toggle-light" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Toggle navigation">
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Toggle navigation">
           <span></span>
           <span></span>
           <span></span>
         </button>
 
-        <nav class="site-nav site-nav-light" id="site-nav" aria-label="Primary navigation">
+        <nav class="site-nav" id="site-nav" aria-label="Primary navigation">
           <a href="index.html">Home</a>
           <a href="about.html">About Us</a>
           <a href="services.html">Our Services</a>
@@ -45,30 +40,51 @@
     </header>
 
     <main>
-      <section class="page-hero contact-hero">
-        <div class="page-hero-overlay"></div>
-        <div class="container page-hero-content reveal fade-up">
-          <h1>Contact Us</h1>
+      <section class="page-hero">
+        <div class="container-wide page-hero-grid">
+          <div class="page-hero-copy reveal fade-up">
+            <span class="section-tag">Contact RSS Inc.</span>
+            <h1>Direct, professional access to our legal team.</h1>
+            <p class="lead">Whether you require legal advice, regulatory guidance, or assistance with governance and compliance matters, we are available to assist.</p>
+          </div>
+
+          <div class="stack-layout reveal fade-left">
+            <figure class="image-placeholder image-placeholder-dark image-placeholder-compact section-shell">
+              <div class="image-placeholder-media">
+                <span class="placeholder-label">Image Placeholder</span>
+                <div class="placeholder-grid" aria-hidden="true">
+                  <span>Office Exterior</span>
+                  <span>Reception Detail</span>
+                </div>
+              </div>
+              <figcaption class="image-placeholder-caption">
+                <h3>Contact-page location photography belongs here.</h3>
+                <p>Use a real office exterior, reception, or signage image to reinforce place and credibility.</p>
+                <span class="placeholder-note">Preferred crop: landscape 3:2.</span>
+              </figcaption>
+            </figure>
+
+            <div class="intro-card section-shell">
+              <span class="detail-label">Availability</span>
+              <h3>Clear communication, prompt engagement, and a professional first point of contact.</h3>
+              <p>Use the enquiry form for direct contact, or reach us by telephone or email for immediate discussion of your matter.</p>
+            </div>
+          </div>
         </div>
       </section>
 
-      <section class="contact-page-content section">
-        <div class="container contact-page-grid">
-          <div class="contact-page-form reveal fade-up">
-            <div class="contact-page-heading">
-              <h2>We are here to <span>help you</span></h2>
-            </div>
-
-            <div class="form-card card contact-form-card">
+      <section class="section">
+        <div class="container">
+          <div class="contact-page-grid">
+            <div class="form-card section-shell reveal fade-up">
+              <span class="detail-label">Enquiry Form</span>
+              <h3>Send an Enquiry</h3>
               <form class="contact-form">
-                <div class="field-grid">
+                <div class="field-grid two-col">
                   <label>
                     <span>First Name <em>*</em></span>
                     <input type="text" name="firstName" placeholder="Full Name">
                   </label>
-                </div>
-
-                <div class="field-grid">
                   <label>
                     <span>Email Address <em>*</em></span>
                     <input type="email" name="email" placeholder="Add email">
@@ -101,37 +117,59 @@
                 <button class="button button-primary" type="submit">Send Message</button>
               </form>
             </div>
-          </div>
 
-          <div class="contact-page-side reveal fade-left">
-            <div class="contact-page-card card">
-              <h2>Contact <span>Details</span></h2>
-              <ul class="contact-list contact-list-dense">
-                <li>
-                  <span class="contact-icon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" fill="none"><path d="M6.6 4h2.7l1.4 4.3-1.7 1.7a15.2 15.2 0 006 6l1.7-1.7 4.3 1.4V18.4c0 .9-.7 1.6-1.6 1.6A15.8 15.8 0 014 5.6C4 4.7 4.7 4 5.6 4z"/></svg>
-                  </span>
-                  <span>+27 11 568 1158</span>
-                </li>
-                <li>
-                  <span class="contact-icon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" fill="none"><path d="M4 6h16v12H4z"/><path d="M4 7l8 6 8-6"/></svg>
-                  </span>
-                  <span>connect@rsslaw.co.za</span>
-                </li>
-                <li>
-                  <span class="contact-icon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" fill="none"><path d="M12 21s6-5.3 6-11a6 6 0 10-12 0c0 5.7 6 11 6 11z"/><circle cx="12" cy="10" r="2.2"/></svg>
-                  </span>
-                  <span>Unit 1, Block A, Upper Grayston Office Park, 150 Linden Street, Sandton, South Africa, 2196</span>
-                </li>
-                <li>
-                  <span class="contact-icon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" fill="none"><path d="M6 8a2 2 0 114 0 2 2 0 01-4 0zm1 4h3v8H7zm6-5h3v2.2c.5-.9 1.8-1.7 3.4-1.7 3.6 0 4.2 2.2 4.2 5v5.5h-3v-4.8c0-1.1 0-2.6-1.8-2.6s-2 1.2-2 2.5V20h-3z"/></svg>
-                  </span>
-                  <span>Linkedin: #rsslaw</span>
-                </li>
-              </ul>
+            <div class="page-stack reveal fade-left">
+              <div class="contact-panel section-shell">
+                <span class="detail-label">Contact Details</span>
+                <h3>Get in touch directly.</h3>
+                <ul class="contact-list">
+                  <li>
+                    <span class="contact-icon" aria-hidden="true">
+                      <svg viewBox="0 0 24 24"><path d="M6.6 4h2.7l1.4 4.3-1.7 1.7a15.2 15.2 0 0 0 6 6l1.7-1.7 4.3 1.4V18.4c0 .9-.7 1.6-1.6 1.6A15.8 15.8 0 0 1 4 5.6C4 4.7 4.7 4 5.6 4z"></path></svg>
+                    </span>
+                    <span>+27 11 568 1158</span>
+                  </li>
+                  <li>
+                    <span class="contact-icon" aria-hidden="true">
+                      <svg viewBox="0 0 24 24"><path d="M4 6h16v12H4z"></path><path d="M4 7l8 6 8-6"></path></svg>
+                    </span>
+                    <span>connect@rsslaw.co.za</span>
+                  </li>
+                  <li>
+                    <span class="contact-icon" aria-hidden="true">
+                      <svg viewBox="0 0 24 24"><path d="M12 21s6-5.3 6-11a6 6 0 1 0-12 0c0 5.7 6 11 6 11z"></path><circle cx="12" cy="10" r="2.2"></circle></svg>
+                    </span>
+                    <span>Unit 1, Block A, Upper Grayston Office Park, 150 Linden Street, Sandton, South Africa, 2196</span>
+                  </li>
+                  <li>
+                    <span class="contact-icon" aria-hidden="true">
+                      <svg viewBox="0 0 24 24"><path d="M6 8a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm1 4h3v8H7zm6-5h3v2.2c.5-.9 1.8-1.7 3.4-1.7 3.6 0 4.2 2.2 4.2 5v5.5h-3v-4.8c0-1.1 0-2.6-1.8-2.6s-2 1.2-2 2.5V20h-3z"></path></svg>
+                    </span>
+                    <span>LinkedIn: #rsslaw</span>
+                  </li>
+                </ul>
+              </div>
+
+              <div class="intro-card section-shell">
+                <span class="detail-label">Office</span>
+                <h3>Sandton location with direct access for clients and professional contacts.</h3>
+                <p>Our office details are provided below for correspondence, visits, and location reference.</p>
+              </div>
+
+              <figure class="image-placeholder section-shell">
+                <div class="image-placeholder-media">
+                  <span class="placeholder-label">Image Placeholder</span>
+                  <div class="placeholder-grid" aria-hidden="true">
+                    <span>Meeting Suite</span>
+                    <span>Reception Interior</span>
+                  </div>
+                </div>
+                <figcaption class="image-placeholder-caption">
+                  <h3>Interior office photography belongs here.</h3>
+                  <p>Use a real reception, waiting area, or meeting room image with clear lighting and minimal staging.</p>
+                  <span class="placeholder-note">Preferred crop: wide landscape.</span>
+                </figcaption>
+              </figure>
 
               <div class="map-card">
                 <iframe
@@ -147,50 +185,59 @@
       </section>
     </main>
 
-    <footer class="site-footer site-footer-light">
-      <div class="container footer-grid footer-grid-light">
+    <footer class="site-footer">
+      <div class="container-wide footer-grid">
         <div>
-          <h3>CONTACT US</h3>
-          <a href="mailto:connect@rsslaw.co.za">connect@rsslaw.co.za</a>
-          <a href="tel:+27115681158">+27 11 568 1158</a>
+          <h3>Contact</h3>
+          <div class="footer-contact">
+            <a href="mailto:connect@rsslaw.co.za">connect@rsslaw.co.za</a>
+            <a href="tel:+27115681158">+27 11 568 1158</a>
+            <p>Unit 1, Block A, Upper Grayston Office Park, Sandton, South Africa</p>
+          </div>
         </div>
 
         <div>
-          <h3>INFORMATION</h3>
-          <a href="index.html">Home</a>
-          <a href="about.html">About Us</a>
-          <a href="services.html">Our Services</a>
-          <a href="contact.html">Contact</a>
+          <h3>Information</h3>
+          <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="about.html">About Us</a>
+            <a href="services.html">Our Services</a>
+            <a href="contact.html">Contact</a>
+          </div>
         </div>
 
         <div>
-          <h3>POLICIES</h3>
-          <a href="index.html">Terms &amp; Conditions</a>
-          <a href="index.html">Privacy Policy</a>
+          <h3>Policies</h3>
+          <div class="footer-links">
+            <a href="index.html">Terms &amp; Conditions</a>
+            <a href="index.html">Privacy Policy</a>
+          </div>
         </div>
 
-        <div class="footer-brand footer-brand-light">
-          <a class="brand brand-dark footer-brandmark" href="index.html" aria-label="RSS Inc. Home">
-            <span class="brand-mark brand-mark-light" aria-hidden="true">
-              <svg viewBox="0 0 64 64" fill="none" role="presentation">
-                <path d="M8 10h14v44H8z" />
-                <path d="M25 10h14v44H25z" />
-                <path d="M42 10h14v44H42z" />
-                <path d="M8 10l24 18 24-18" />
-              </svg>
+        <div class="footer-brand">
+          <a class="brand" href="index.html" aria-label="RSS Inc. Home">
+            <span class="brand-mark" aria-hidden="true">
+              <img src="images/logo.png" alt="">
             </span>
             <span class="brand-copy">
               <strong>RSS Inc.</strong>
               <small>Legal | Regulatory | Compliance</small>
             </span>
           </a>
-          <p>Registration Number: 2024/622929/21</p>
-          <p>Legal Practice Number: F72676</p>
+          <span class="detail-label">Professional Information</span>
+          <div class="detail-stack">
+            <p>Registration Number: 2024/622929/21</p>
+            <p>Legal Practice Number: F72676</p>
+          </div>
         </div>
       </div>
-      <div class="container footer-bottom footer-bottom-light">
-        <p>&copy; 2024 RSS Inc. All Rights Reserved. Designed &amp; Developed by Pixel Graphics</p>
-        <a class="scroll-top scroll-top-light" href="#top" aria-label="Back to top">&#8593;</a>
+      <div class="container-wide footer-bottom">
+        <p>&copy; 2024 RSS Inc. All Rights Reserved.</p>
+        <a class="scroll-top" href="#top" aria-label="Back to top">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M12 4.75a1.25 1.25 0 0 1 .88.37l4 4a1.25 1.25 0 1 1-1.76 1.76l-1.87-1.87V18a1.25 1.25 0 1 1-2.5 0V9.01l-1.87 1.87a1.25 1.25 0 1 1-1.76-1.76l4-4A1.25 1.25 0 0 1 12 4.75Z"></path>
+          </svg>
+        </a>
       </div>
     </footer>
   </div>
