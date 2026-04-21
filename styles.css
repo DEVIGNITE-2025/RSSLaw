@@ -672,6 +672,44 @@ p {
   max-width: 700px;
 }
 
+.services-page .page-hero .page-hero-grid {
+  grid-template-columns: 1fr;
+  gap: 34px;
+}
+
+.services-page .page-hero-copy {
+  justify-items: center;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.services-page .page-hero-copy p {
+  max-width: 860px;
+}
+
+.services-page .page-hero .stack-layout {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  align-items: stretch;
+}
+
+.services-page .page-hero .stack-layout > * {
+  height: 100%;
+}
+
+.services-page .page-hero .stack-layout .image-placeholder,
+.services-page .page-hero .stack-layout .intro-card {
+  width: 100%;
+  min-height: 520px;
+}
+
+.services-page .page-hero .stack-layout .image-placeholder {
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) auto;
+  margin: 0;
+}
+
 .section-heading,
 .intro-copy,
 .about-copy,
@@ -783,7 +821,10 @@ p {
 }
 
 .about-advisory-layout .advisory-standard-card .advisory-pill {
-  min-height: 28px;
+  width: fit-content;
+  min-width: 0;
+  height: 32px;
+  min-height: 32px;
 }
 
 .about-advisory-layout .client-expectations-card {
@@ -1099,6 +1140,10 @@ textarea {
   align-items: start;
 }
 
+.services-page .services-layout {
+  grid-template-columns: 320px minmax(0, 1fr);
+}
+
 .image-placeholder {
   display: grid;
   gap: 0;
@@ -1224,11 +1269,19 @@ textarea {
   gap: 22px;
 }
 
+.services-main > [id] {
+  scroll-margin-top: clamp(140px, 24vh, 240px);
+}
+
 .services-sidebar {
   position: sticky;
   top: 108px;
   display: grid;
   gap: 16px;
+}
+
+.services-page .services-sidebar {
+  order: -1;
 }
 
 .sidebar-card a {
@@ -1504,6 +1557,10 @@ textarea {
   .practice-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+
+  .services-page .page-hero .page-hero-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 900px) {
@@ -1566,6 +1623,10 @@ textarea {
 
   .services-sidebar {
     position: static;
+  }
+
+  .services-page .page-hero .stack-layout {
+    grid-template-columns: 1fr;
   }
 
   .hero {
