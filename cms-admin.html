@@ -1,0 +1,1071 @@
+﻿<!DOCTYPE html>
+<!-- CMS ADMIN — RSS Inc. Internal use only. Remove test credentials before deploying live. -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CMS Admin | RSS Inc.</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* ── PAGE SHELL ── */
+    .cms-admin-page { background: #f3efe8; min-height: 100vh; font-family: 'Manrope', sans-serif; }
+
+    /* ── TOPBAR ── */
+    .cms-topbar {
+      background: #0b1624;
+      color: #fff;
+      padding: 0 2rem;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+    .cms-topbar-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: #fff;
+      text-decoration: none;
+    }
+    .cms-topbar-brand img {
+      height: 28px;
+      width: auto;
+      filter: brightness(0) invert(1);
+      opacity: 0.9;
+    }
+    .cms-topbar-right { display: flex; align-items: center; gap: 1.25rem; }
+    .cms-admin-badge {
+      font-size: 0.68rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      background: #977443;
+      color: #fff;
+      padding: 0.2em 0.65em;
+      border-radius: 2px;
+    }
+    .cms-user-label { font-size: 0.82rem; color: rgba(255,255,255,0.5); }
+    .cms-logout-btn {
+      font-family: 'Manrope', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.6);
+      background: none;
+      border: 1px solid rgba(255,255,255,0.15);
+      padding: 0.3em 0.9em;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: color 160ms ease, border-color 160ms ease;
+    }
+    .cms-logout-btn:hover { color: #fff; border-color: rgba(255,255,255,0.4); }
+
+    /* ── LAYOUT ── */
+    .cms-layout {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      min-height: calc(100vh - 56px);
+    }
+
+    /* ── SIDEBAR ── */
+    .cms-sidebar {
+      background: #122033;
+      padding: 2rem 0;
+      border-right: 1px solid rgba(255,255,255,0.06);
+      position: sticky;
+      top: 56px;
+      height: calc(100vh - 56px);
+      overflow-y: auto;
+    }
+    .cms-nav-group-label {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.3);
+      padding: 0 1.5rem 0.5rem;
+      margin-top: 1.5rem;
+    }
+    .cms-nav-group-label:first-child { margin-top: 0; }
+    .cms-nav-link {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      padding: 0.6rem 1.5rem;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: rgba(255,255,255,0.55);
+      text-decoration: none;
+      border-left: 2px solid transparent;
+      transition: color 160ms, background 160ms, border-color 160ms;
+    }
+    .cms-nav-link:hover { color: rgba(255,255,255,0.9); background: rgba(255,255,255,0.04); }
+    .cms-nav-link.active { color: #fff; border-left-color: #977443; background: rgba(255,255,255,0.06); }
+    .cms-nav-icon { width: 16px; height: 16px; opacity: 0.7; flex-shrink: 0; }
+
+    /* ── MAIN ── */
+    .cms-main { padding: 2.5rem 3rem; overflow-y: auto; }
+
+    /* ── PAGE HEADER ── */
+    .cms-page-header {
+      margin-bottom: 2.5rem;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .cms-page-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      font-weight: 600;
+      color: #122033;
+      line-height: 1.1;
+    }
+    .cms-page-subtitle { font-size: 0.85rem; color: #6b7280; margin-top: 0.3rem; }
+
+    /* ── STAT GRID ── */
+    .cms-stat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 1.25rem;
+      margin-bottom: 3rem;
+    }
+    .cms-stat-card {
+      background: #fff;
+      border: 1px solid #e8e3da;
+      border-radius: 8px;
+      padding: 1.4rem 1.5rem;
+    }
+    .cms-stat-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #9ca3af;
+      margin-bottom: 0.5rem;
+    }
+    .cms-stat-value {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.2rem;
+      font-weight: 600;
+      color: #122033;
+      line-height: 1;
+    }
+    .cms-stat-note { font-size: 0.75rem; color: #9ca3af; margin-top: 0.35rem; }
+
+    /* ── SECTION ── */
+    .cms-section { margin-bottom: 3.5rem; }
+    .cms-section-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 1.25rem;
+      flex-wrap: wrap;
+    }
+    .cms-section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #122033;
+    }
+    .cms-section-subtitle { font-size: 0.8rem; color: #9ca3af; margin-top: 0.15rem; }
+
+    /* ── TABLE CARD ── */
+    .cms-table-card {
+      background: #fff;
+      border: 1px solid #e8e3da;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .cms-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.84rem;
+    }
+    .cms-table thead th {
+      text-align: left;
+      padding: 0.7rem 1.5rem;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      color: #9ca3af;
+      background: #faf7f3;
+      border-bottom: 1px solid #f0ebe2;
+    }
+    .cms-table tbody tr {
+      border-bottom: 1px solid #f5f1eb;
+      transition: background 140ms;
+    }
+    .cms-table tbody tr:last-child { border-bottom: none; }
+    .cms-table tbody tr:hover { background: #faf7f3; }
+    .cms-table td {
+      padding: 0.9rem 1.5rem;
+      color: #374151;
+      vertical-align: middle;
+    }
+    .cms-table td.title-cell { font-weight: 600; color: #122033; max-width: 260px; }
+    .cms-table td.desc-cell { color: #6b7280; font-size: 0.8rem; max-width: 240px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .cms-table td.thumb-cell { width: 64px; }
+    .cms-table td.thumb-cell img {
+      width: 60px;
+      height: 38px;
+      object-fit: cover;
+      border-radius: 4px;
+      background: #e8e3da;
+      display: block;
+    }
+
+    /* ── BADGES ── */
+    .cms-status-badge {
+      display: inline-block;
+      font-size: 0.67rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 0.2em 0.65em;
+      border-radius: 3px;
+      white-space: nowrap;
+    }
+    .cms-status-badge.published { background: #d1fae5; color: #065f46; }
+    .cms-status-badge.draft { background: #fef3c7; color: #92400e; }
+    .cms-status-badge.active { background: #dbeafe; color: #1e40af; }
+
+    /* ── ROW ACTIONS ── */
+    .cms-row-actions { display: flex; gap: 0.5rem; align-items: center; }
+    .cms-action-btn {
+      font-family: 'Manrope', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: #977443;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0.2em 0;
+      border-bottom: 1px solid transparent;
+      transition: border-color 140ms;
+      line-height: 1;
+    }
+    .cms-action-btn:hover { border-bottom-color: #977443; }
+    .cms-action-btn.danger { color: #dc2626; }
+    .cms-action-btn.danger:hover { border-bottom-color: #dc2626; }
+    .cms-row-divider { color: #d1d5db; font-size: 0.75rem; user-select: none; }
+
+    /* ── EMPTY STATE ── */
+    .cms-empty {
+      text-align: center;
+      padding: 3.5rem 1.5rem;
+      color: #9ca3af;
+      font-size: 0.85rem;
+    }
+    .cms-empty strong { display: block; font-size: 1rem; color: #6b7280; margin-bottom: 0.4rem; }
+
+    /* ── BUTTONS ── */
+    .cms-btn {
+      font-family: 'Manrope', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 600;
+      padding: 0.5em 1.2em;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 160ms, color 160ms, border-color 160ms;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4em;
+      border: 1px solid transparent;
+      line-height: 1.4;
+    }
+    .cms-btn-primary { background: #977443; color: #fff; border-color: #977443; }
+    .cms-btn-primary:hover { background: #7d5f35; border-color: #7d5f35; }
+    .cms-btn-ghost { background: none; color: #6b7280; border-color: #e0d9ce; }
+    .cms-btn-ghost:hover { color: #122033; border-color: #b8b0a2; }
+    .cms-btn-danger { background: #fee2e2; color: #dc2626; border-color: #fca5a5; }
+    .cms-btn-danger:hover { background: #fecaca; }
+    .cms-btn-sm { font-size: 0.76rem; padding: 0.38em 0.9em; }
+
+    /* ── MODAL OVERLAY ── */
+    .cms-modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(11, 22, 36, 0.55);
+      backdrop-filter: blur(3px);
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 200ms ease;
+    }
+    .cms-modal-overlay.open {
+      opacity: 1;
+      pointer-events: all;
+    }
+    .cms-modal {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.18);
+      width: 100%;
+      max-width: 540px;
+      max-height: 90vh;
+      overflow-y: auto;
+      transform: translateY(12px) scale(0.98);
+      transition: transform 220ms ease;
+    }
+    .cms-modal-overlay.open .cms-modal {
+      transform: translateY(0) scale(1);
+    }
+    .cms-modal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.5rem 1.75rem 0;
+      margin-bottom: 1.25rem;
+    }
+    .cms-modal-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: #122033;
+    }
+    .cms-modal-close {
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: #9ca3af;
+      font-size: 1.4rem;
+      line-height: 1;
+      padding: 0.2em;
+      border-radius: 4px;
+      transition: color 140ms, background 140ms;
+    }
+    .cms-modal-close:hover { color: #374151; background: #f3f4f6; }
+    .cms-modal-body { padding: 0 1.75rem 1.75rem; }
+    .cms-modal-footer {
+      padding: 1.25rem 1.75rem;
+      border-top: 1px solid #f0ebe2;
+      display: flex;
+      justify-content: flex-end;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    /* ── FORM ── */
+    .cms-form-group { margin-bottom: 1.1rem; }
+    .cms-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .cms-label {
+      display: block;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: #374151;
+      margin-bottom: 0.4rem;
+      letter-spacing: 0.01em;
+    }
+    .cms-label .req { color: #dc2626; margin-left: 0.15em; }
+    .cms-input,
+    .cms-textarea,
+    .cms-select {
+      width: 100%;
+      font-family: 'Manrope', sans-serif;
+      font-size: 0.85rem;
+      color: #111827;
+      background: #fff;
+      border: 1px solid #d1cfc8;
+      border-radius: 6px;
+      padding: 0.55em 0.85em;
+      transition: border-color 160ms, box-shadow 160ms;
+      outline: none;
+    }
+    .cms-input:focus,
+    .cms-textarea:focus,
+    .cms-select:focus {
+      border-color: #977443;
+      box-shadow: 0 0 0 3px rgba(151,116,67,0.12);
+    }
+    .cms-textarea { resize: vertical; min-height: 90px; }
+    .cms-input-hint { font-size: 0.73rem; color: #9ca3af; margin-top: 0.3rem; }
+
+    /* ── TOAST ── */
+    .cms-toast {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      background: #122033;
+      color: #fff;
+      font-family: 'Manrope', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 600;
+      padding: 0.75rem 1.25rem;
+      border-radius: 8px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+      z-index: 500;
+      transform: translateY(8px);
+      opacity: 0;
+      transition: opacity 200ms, transform 200ms;
+      pointer-events: none;
+    }
+    .cms-toast.show { opacity: 1; transform: translateY(0); }
+    .cms-toast.success { background: #065f46; }
+    .cms-toast.error { background: #991b1b; }
+
+    /* ── CONFIRM INLINE ── */
+    .cms-confirm-row td {
+      background: #fff5f5;
+      padding: 0.75rem 1.5rem;
+    }
+    .cms-confirm-msg {
+      font-size: 0.83rem;
+      color: #991b1b;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .cms-layout { grid-template-columns: 1fr; }
+      .cms-sidebar { display: none; }
+      .cms-main { padding: 1.5rem 1.25rem; }
+      .cms-stat-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 640px) {
+      .cms-stat-grid { grid-template-columns: 1fr; }
+      .cms-form-row { grid-template-columns: 1fr; }
+      .cms-table td.desc-cell,
+      .cms-table td.thumb-cell { display: none; }
+    }
+  </style>
+</head>
+<body class="cms-admin-page">
+
+  <!-- TOPBAR -->
+  <header class="cms-topbar">
+    <a class="cms-topbar-brand" href="index.html">
+      <img src="images/logo.png" alt="RSS Inc." onerror="this.style.display='none'">
+      RSS Inc.
+      <span class="cms-admin-badge">Admin</span>
+    </a>
+    <div class="cms-topbar-right">
+      <span class="cms-user-label" id="cms-user-display">—</span>
+      <button class="cms-logout-btn" id="cms-logout-btn" type="button">Sign out</button>
+    </div>
+  </header>
+
+  <div class="cms-layout">
+
+    <!-- SIDEBAR -->
+    <nav class="cms-sidebar" aria-label="CMS navigation">
+      <p class="cms-nav-group-label">Content</p>
+      <a class="cms-nav-link" href="#section-overview" data-nav="overview">
+        <svg class="cms-nav-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="1" y="1" width="6" height="6" rx="1"/><rect x="9" y="1" width="6" height="6" rx="1"/><rect x="1" y="9" width="6" height="6" rx="1"/><rect x="9" y="9" width="6" height="6" rx="1"/></svg>
+        Overview
+      </a>
+      <a class="cms-nav-link" href="#section-videos" data-nav="videos">
+        <svg class="cms-nav-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="1" y="2" width="14" height="12" rx="2"/><path d="M6 5.5l5 2.5-5 2.5V5.5z" fill="currentColor" stroke="none"/></svg>
+        Videos
+      </a>
+      <a class="cms-nav-link" href="#section-blogs" data-nav="blogs">
+        <svg class="cms-nav-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 4h12M2 8h8M2 12h5"/></svg>
+        Blogs
+      </a>
+
+      <p class="cms-nav-group-label">Site</p>
+      <a class="cms-nav-link" href="blogs-and-socials.html" target="_blank">
+        <svg class="cms-nav-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M9 3h4v4M9 7l4-4M7 5H3v8h8V9"/></svg>
+        Blogs &amp; Socials ↗
+      </a>
+      <a class="cms-nav-link" href="index.html" target="_blank">
+        <svg class="cms-nav-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 6.5L8 2l6 4.5V14a1 1 0 01-1 1H3a1 1 0 01-1-1V6.5z"/></svg>
+        View Site ↗
+      </a>
+    </nav>
+
+    <!-- MAIN -->
+    <main class="cms-main" id="cms-main">
+
+      <!-- OVERVIEW -->
+      <section id="section-overview">
+        <div class="cms-page-header">
+          <div>
+            <h1 class="cms-page-title">Dashboard</h1>
+            <p class="cms-page-subtitle">Manage your site content — videos and blogs.</p>
+          </div>
+        </div>
+
+        <div class="cms-stat-grid">
+          <div class="cms-stat-card">
+            <p class="cms-stat-label">Videos</p>
+            <p class="cms-stat-value" id="stat-videos">—</p>
+            <p class="cms-stat-note">Featured</p>
+          </div>
+          <div class="cms-stat-card">
+            <p class="cms-stat-label">Blogs</p>
+            <p class="cms-stat-value" id="stat-blogs">—</p>
+            <p class="cms-stat-note">Total</p>
+          </div>
+          <div class="cms-stat-card">
+            <p class="cms-stat-label">Published</p>
+            <p class="cms-stat-value" id="stat-published">—</p>
+            <p class="cms-stat-note">Articles live</p>
+          </div>
+          <div class="cms-stat-card">
+            <p class="cms-stat-label">Drafts</p>
+            <p class="cms-stat-value" id="stat-drafts">—</p>
+            <p class="cms-stat-note">Not yet live</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- VIDEOS SECTION -->
+      <section id="section-videos" class="cms-section">
+        <div class="cms-section-header">
+          <div>
+            <h2 class="cms-section-title">Featured Videos</h2>
+            <p class="cms-section-subtitle">Videos displayed on the Blogs &amp; Socials page.</p>
+          </div>
+          <button class="cms-btn cms-btn-primary" id="btn-add-video" type="button">+ Add Video</button>
+        </div>
+        <div class="cms-table-card">
+          <table class="cms-table" aria-label="Videos">
+            <thead>
+              <tr>
+                <th style="width:70px">Thumb</th>
+                <th>Title</th>
+                <th>YouTube ID</th>
+                <th>Label</th>
+                <th style="width:100px">Status</th>
+                <th style="width:120px">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="videos-tbody"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- BLOGS SECTION -->
+      <section id="section-blogs" class="cms-section">
+        <div class="cms-section-header">
+          <div>
+            <h2 class="cms-section-title">Blog Articles</h2>
+            <p class="cms-section-subtitle">Articles displayed on the Blogs &amp; Socials and All Articles pages.</p>
+          </div>
+          <button class="cms-btn cms-btn-primary" id="btn-add-blog" type="button">+ Add Article</button>
+        </div>
+        <div class="cms-table-card">
+          <table class="cms-table" aria-label="Blog articles">
+            <thead>
+              <tr>
+                <th>Title</th>
+                <th>Category</th>
+                <th class="desc-cell">Excerpt</th>
+                <th>Date</th>
+                <th style="width:100px">Status</th>
+                <th style="width:120px">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="blogs-tbody"></tbody>
+          </table>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- VIDEO MODAL -->
+  <div class="cms-modal-overlay" id="video-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="video-modal-title">
+    <div class="cms-modal">
+      <div class="cms-modal-header">
+        <h3 class="cms-modal-title" id="video-modal-title">Add Video</h3>
+        <button class="cms-modal-close" data-close-modal="video-modal-overlay" aria-label="Close">&#x2715;</button>
+      </div>
+      <div class="cms-modal-body">
+        <form id="video-form" novalidate>
+          <input type="hidden" id="video-edit-id">
+          <div class="cms-form-group">
+            <label class="cms-label" for="video-title">Title <span class="req">*</span></label>
+            <input class="cms-input" type="text" id="video-title" placeholder="e.g. Regulatory change briefing" required>
+          </div>
+          <div class="cms-form-group">
+            <label class="cms-label" for="video-youtube-id">YouTube Video ID <span class="req">*</span></label>
+            <input class="cms-input" type="text" id="video-youtube-id" placeholder="e.g. Y8Yv9R4R6xM" required>
+            <p class="cms-input-hint">The ID at the end of a YouTube URL: youtube.com/watch?v=<strong>Y8Yv9R4R6xM</strong></p>
+          </div>
+          <div class="cms-form-group">
+            <label class="cms-label" for="video-description">Description</label>
+            <textarea class="cms-textarea" id="video-description" placeholder="Brief description shown under the video..." rows="3"></textarea>
+          </div>
+          <div class="cms-form-row">
+            <div class="cms-form-group">
+              <label class="cms-label" for="video-label">Label</label>
+              <input class="cms-input" type="text" id="video-label" placeholder="e.g. Video 01">
+            </div>
+            <div class="cms-form-group">
+              <label class="cms-label" for="video-status">Status</label>
+              <select class="cms-select" id="video-status">
+                <option value="active">Active</option>
+                <option value="draft">Draft (hidden)</option>
+              </select>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="cms-modal-footer">
+        <button class="cms-btn cms-btn-ghost" data-close-modal="video-modal-overlay" type="button">Cancel</button>
+        <button class="cms-btn cms-btn-primary" id="video-save-btn" type="button">Save Video</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- BLOG MODAL -->
+  <div class="cms-modal-overlay" id="blog-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="blog-modal-title">
+    <div class="cms-modal">
+      <div class="cms-modal-header">
+        <h3 class="cms-modal-title" id="blog-modal-title">Add Article</h3>
+        <button class="cms-modal-close" data-close-modal="blog-modal-overlay" aria-label="Close">&#x2715;</button>
+      </div>
+      <div class="cms-modal-body">
+        <form id="blog-form" novalidate>
+          <input type="hidden" id="blog-edit-id">
+          <div class="cms-form-group">
+            <label class="cms-label" for="blog-title">Title <span class="req">*</span></label>
+            <input class="cms-input" type="text" id="blog-title" placeholder="e.g. Understanding employment law changes" required>
+          </div>
+          <div class="cms-form-row">
+            <div class="cms-form-group">
+              <label class="cms-label" for="blog-category">Category <span class="req">*</span></label>
+              <input class="cms-input" type="text" id="blog-category" placeholder="e.g. Employment" required>
+            </div>
+            <div class="cms-form-group">
+              <label class="cms-label" for="blog-status">Status</label>
+              <select class="cms-select" id="blog-status">
+                <option value="published">Published</option>
+                <option value="draft">Draft</option>
+              </select>
+            </div>
+          </div>
+          <div class="cms-form-group">
+            <label class="cms-label" for="blog-excerpt">Excerpt <span class="req">*</span></label>
+            <textarea class="cms-textarea" id="blog-excerpt" placeholder="A short summary shown in the article preview..." rows="3" required></textarea>
+          </div>
+          <div class="cms-form-row">
+            <div class="cms-form-group">
+              <label class="cms-label" for="blog-date">Published Date <span class="req">*</span></label>
+              <input class="cms-input" type="date" id="blog-date" required>
+            </div>
+            <div class="cms-form-group">
+              <label class="cms-label" for="blog-slug">Slug</label>
+              <input class="cms-input" type="text" id="blog-slug" placeholder="auto-generated if blank">
+              <p class="cms-input-hint">URL identifier, lowercase, hyphens only.</p>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="cms-modal-footer">
+        <button class="cms-btn cms-btn-ghost" data-close-modal="blog-modal-overlay" type="button">Cancel</button>
+        <button class="cms-btn cms-btn-primary" id="blog-save-btn" type="button">Save Article</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST -->
+  <div class="cms-toast" id="cms-toast" role="status" aria-live="polite"></div>
+
+  <script src="cms-auth-bridge.js"></script>
+  <script src="blogs-socials-data.js"></script>
+  <script>
+    // ── AUTH GUARD ──────────────────────────────────────────────
+    (function () {
+      const ctx = window.RSSCmsAccess?.getContext();
+      if (!ctx || !ctx.isAuthenticated) {
+        window.location.replace('login.html');
+      }
+    })();
+
+    // ── USER DISPLAY & LOGOUT ───────────────────────────────────
+    const userDisplay = document.getElementById('cms-user-display');
+    if (userDisplay) {
+      userDisplay.textContent = sessionStorage.getItem('rss-cms-identity') || 'Administrator';
+    }
+    document.getElementById('cms-logout-btn')?.addEventListener('click', () => {
+      sessionStorage.clear();
+      window.location.assign('login.html');
+    });
+
+    // ── STORAGE HELPERS ─────────────────────────────────────────
+    const STORAGE_KEYS = { videos: 'rss-cms-videos', blogs: 'rss-cms-blogs' };
+
+    const loadVideos = () => {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEYS.videos);
+        if (raw) return JSON.parse(raw);
+      } catch (_) {}
+      // Seed from blogsSocialsData on first load
+      const seeded = (window.blogsSocialsData?.featuredVideos || []).map(v => ({ ...v, status: 'active' }));
+      saveVideos(seeded);
+      return seeded;
+    };
+
+    const loadBlogs = () => {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEYS.blogs);
+        if (raw) return JSON.parse(raw);
+      } catch (_) {}
+      // Seed from blogsSocialsData on first load
+      const seeded = (window.blogsSocialsData?.articlePreviews || []).map(a => ({ ...a, status: 'published' }));
+      saveBlogs(seeded);
+      return seeded;
+    };
+
+    const saveVideos = (data) => localStorage.setItem(STORAGE_KEYS.videos, JSON.stringify(data));
+    const saveBlogs  = (data) => localStorage.setItem(STORAGE_KEYS.blogs,  JSON.stringify(data));
+
+    const uid = () => `id-${Date.now()}-${Math.random().toString(36).slice(2, 7)}`;
+
+    // ── TOAST ────────────────────────────────────────────────────
+    const toast = document.getElementById('cms-toast');
+    let toastTimer = null;
+    const showToast = (msg, type = 'success') => {
+      if (!toast) return;
+      toast.textContent = msg;
+      toast.className = `cms-toast show ${type}`;
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => { toast.className = 'cms-toast'; }, 3000);
+    };
+
+    // ── MODAL HELPERS ────────────────────────────────────────────
+    const openModal  = (id) => document.getElementById(id)?.classList.add('open');
+    const closeModal = (id) => document.getElementById(id)?.classList.remove('open');
+
+    document.querySelectorAll('[data-close-modal]').forEach(el => {
+      el.addEventListener('click', () => closeModal(el.dataset.closeModal));
+    });
+    document.querySelectorAll('.cms-modal-overlay').forEach(overlay => {
+      overlay.addEventListener('click', (e) => {
+        if (e.target === overlay) closeModal(overlay.id);
+      });
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        document.querySelectorAll('.cms-modal-overlay.open').forEach(o => closeModal(o.id));
+      }
+    });
+
+    // ── SIDEBAR ACTIVE STATE ─────────────────────────────────────
+    const navLinks = document.querySelectorAll('[data-nav]');
+    const sections = ['overview', 'videos', 'blogs'].map(id => document.getElementById(`section-${id}`));
+
+    const updateActiveNav = () => {
+      let current = 'overview';
+      sections.forEach(sec => {
+        if (sec && window.scrollY + 80 >= sec.offsetTop) current = sec.id.replace('section-', '');
+      });
+      navLinks.forEach(l => l.classList.toggle('active', l.dataset.nav === current));
+    };
+
+    window.addEventListener('scroll', updateActiveNav, { passive: true });
+    updateActiveNav();
+
+    navLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const target = document.querySelector(link.getAttribute('href'));
+        if (target) target.scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+
+    // ═══════════════════════════════════════════════════════════
+    // VIDEOS CRUD
+    // ═══════════════════════════════════════════════════════════
+    const videosTbody = document.getElementById('videos-tbody');
+
+    const renderVideos = () => {
+      const videos = loadVideos();
+      document.getElementById('stat-videos').textContent = videos.length;
+
+      if (!videos.length) {
+        videosTbody.innerHTML = `<tr><td colspan="6"><div class="cms-empty"><strong>No videos yet</strong>Add your first featured video above.</div></td></tr>`;
+        return;
+      }
+
+      videosTbody.innerHTML = videos.map(v => `
+        <tr>
+          <td class="thumb-cell">
+            <img src="https://i.ytimg.com/vi/${escHtml(v.id)}/mqdefault.jpg" alt="" loading="lazy" onerror="this.style.opacity='0.3'">
+          </td>
+          <td class="title-cell">${escHtml(v.title)}</td>
+          <td><code style="font-size:0.78rem;color:#6b7280">${escHtml(v.id)}</code></td>
+          <td>${escHtml(v.label || '—')}</td>
+          <td><span class="cms-status-badge ${v.status === 'active' ? 'active' : 'draft'}">${escHtml(v.status || 'active')}</span></td>
+          <td>
+            <div class="cms-row-actions">
+              <button class="cms-action-btn" onclick="editVideo('${escHtml(v.id)}')" type="button">Edit</button>
+              <span class="cms-row-divider">·</span>
+              <button class="cms-action-btn danger" onclick="confirmDeleteVideo('${escHtml(v.id)}')" type="button">Delete</button>
+            </div>
+          </td>
+        </tr>
+      `).join('');
+    };
+
+    // Open add
+    document.getElementById('btn-add-video').addEventListener('click', () => {
+      document.getElementById('video-modal-title').textContent = 'Add Video';
+      document.getElementById('video-edit-id').value = '';
+      document.getElementById('video-form').reset();
+      openModal('video-modal-overlay');
+      document.getElementById('video-title').focus();
+    });
+
+    // Edit
+    window.editVideo = (id) => {
+      const videos = loadVideos();
+      const v = videos.find(x => x.id === id);
+      if (!v) return;
+      document.getElementById('video-modal-title').textContent = 'Edit Video';
+      document.getElementById('video-edit-id').value = v.id;
+      document.getElementById('video-title').value = v.title || '';
+      document.getElementById('video-youtube-id').value = v.id || '';
+      document.getElementById('video-description').value = v.description || '';
+      document.getElementById('video-label').value = v.label || '';
+      document.getElementById('video-status').value = v.status || 'active';
+      openModal('video-modal-overlay');
+    };
+
+    // Save
+    document.getElementById('video-save-btn').addEventListener('click', () => {
+      const title  = document.getElementById('video-title').value.trim();
+      const ytId   = document.getElementById('video-youtube-id').value.trim();
+      if (!title || !ytId) { showToast('Title and YouTube ID are required.', 'error'); return; }
+
+      const desc   = document.getElementById('video-description').value.trim();
+      const label  = document.getElementById('video-label').value.trim();
+      const status = document.getElementById('video-status').value;
+      const editId = document.getElementById('video-edit-id').value;
+
+      let videos = loadVideos();
+
+      if (editId) {
+        videos = videos.map(v => v.id === editId
+          ? { ...v, id: ytId, title, description: desc, label, status, url: `https://www.youtube.com/watch?v=${ytId}`, thumbnail: `https://i.ytimg.com/vi/${ytId}/hqdefault.jpg` }
+          : v
+        );
+        showToast('Video updated.');
+      } else {
+        videos.push({ id: ytId, title, description: desc, label: label || `Video ${String(videos.length + 1).padStart(2,'0')}`, status, url: `https://www.youtube.com/watch?v=${ytId}`, thumbnail: `https://i.ytimg.com/vi/${ytId}/hqdefault.jpg` });
+        showToast('Video added.');
+      }
+
+      saveVideos(videos);
+      closeModal('video-modal-overlay');
+      renderVideos();
+    });
+
+    // Confirm delete
+    window.confirmDeleteVideo = (id) => {
+      const videos = loadVideos();
+      const v = videos.find(x => x.id === id);
+      if (!v) return;
+
+      // Remove any existing confirm row
+      document.querySelectorAll('.cms-confirm-row').forEach(r => r.remove());
+
+      const rows = videosTbody.querySelectorAll('tr');
+      rows.forEach(row => {
+        const btn = row.querySelector(`[onclick="confirmDeleteVideo('${id}')"]`);
+        if (btn) {
+          const confirmRow = document.createElement('tr');
+          confirmRow.className = 'cms-confirm-row';
+          confirmRow.innerHTML = `<td colspan="6"><div class="cms-confirm-msg">
+            Delete "<strong>${escHtml(v.title)}</strong>"? This cannot be undone.
+            <span style="display:flex;gap:0.5rem">
+              <button class="cms-btn cms-btn-danger cms-btn-sm" onclick="deleteVideo('${escHtml(id)}')" type="button">Yes, delete</button>
+              <button class="cms-btn cms-btn-ghost cms-btn-sm" onclick="this.closest('tr').remove()" type="button">Cancel</button>
+            </span>
+          </div></td>`;
+          row.insertAdjacentElement('afterend', confirmRow);
+        }
+      });
+    };
+
+    window.deleteVideo = (id) => {
+      let videos = loadVideos().filter(v => v.id !== id);
+      saveVideos(videos);
+      showToast('Video deleted.');
+      renderVideos();
+    };
+
+    // ═══════════════════════════════════════════════════════════
+    // BLOGS CRUD
+    // ═══════════════════════════════════════════════════════════
+    const blogsTbody = document.getElementById('blogs-tbody');
+
+    const formatDisplayDate = (dateStr) => {
+      if (!dateStr) return '—';
+      try {
+        return new Date(dateStr + 'T00:00:00').toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' });
+      } catch (_) { return dateStr; }
+    };
+
+    const slugify = (str) =>
+      str.toLowerCase().trim().replace(/[^\w\s-]/g,'').replace(/\s+/g,'-').replace(/-+/g,'-');
+
+    const renderBlogs = () => {
+      const blogs = loadBlogs();
+      const published = blogs.filter(b => b.status === 'published').length;
+      const drafts    = blogs.filter(b => b.status === 'draft').length;
+      document.getElementById('stat-blogs').textContent     = blogs.length;
+      document.getElementById('stat-published').textContent = published;
+      document.getElementById('stat-drafts').textContent    = drafts;
+
+      if (!blogs.length) {
+        blogsTbody.innerHTML = `<tr><td colspan="6"><div class="cms-empty"><strong>No articles yet</strong>Add your first blog article above.</div></td></tr>`;
+        return;
+      }
+
+      blogsTbody.innerHTML = blogs.map(b => `
+        <tr>
+          <td class="title-cell">${escHtml(b.title)}</td>
+          <td>${escHtml(b.category || '—')}</td>
+          <td class="desc-cell">${escHtml(b.excerpt || '—')}</td>
+          <td style="white-space:nowrap">${escHtml(formatDisplayDate(b.published))}</td>
+          <td><span class="cms-status-badge ${b.status === 'published' ? 'published' : 'draft'}">${escHtml(b.status || 'published')}</span></td>
+          <td>
+            <div class="cms-row-actions">
+              <button class="cms-action-btn" onclick="editBlog('${escHtml(b.id)}')" type="button">Edit</button>
+              <span class="cms-row-divider">·</span>
+              <button class="cms-action-btn danger" onclick="confirmDeleteBlog('${escHtml(b.id)}')" type="button">Delete</button>
+            </div>
+          </td>
+        </tr>
+      `).join('');
+    };
+
+    // Open add
+    document.getElementById('btn-add-blog').addEventListener('click', () => {
+      document.getElementById('blog-modal-title').textContent = 'Add Article';
+      document.getElementById('blog-edit-id').value = '';
+      document.getElementById('blog-form').reset();
+      document.getElementById('blog-date').value = new Date().toISOString().split('T')[0];
+      openModal('blog-modal-overlay');
+      document.getElementById('blog-title').focus();
+    });
+
+    // Auto-slug from title
+    document.getElementById('blog-title').addEventListener('blur', () => {
+      const slugField = document.getElementById('blog-slug');
+      if (!slugField.value.trim()) {
+        slugField.value = slugify(document.getElementById('blog-title').value);
+      }
+    });
+
+    // Edit
+    window.editBlog = (id) => {
+      const blogs = loadBlogs();
+      const b = blogs.find(x => x.id === id);
+      if (!b) return;
+      document.getElementById('blog-modal-title').textContent = 'Edit Article';
+      document.getElementById('blog-edit-id').value   = b.id;
+      document.getElementById('blog-title').value     = b.title || '';
+      document.getElementById('blog-category').value  = b.category || '';
+      document.getElementById('blog-status').value    = b.status || 'published';
+      document.getElementById('blog-excerpt').value   = b.excerpt || '';
+      document.getElementById('blog-date').value      = b.published || '';
+      document.getElementById('blog-slug').value      = b.slug || '';
+      openModal('blog-modal-overlay');
+    };
+
+    // Save
+    document.getElementById('blog-save-btn').addEventListener('click', () => {
+      const title    = document.getElementById('blog-title').value.trim();
+      const category = document.getElementById('blog-category').value.trim();
+      const excerpt  = document.getElementById('blog-excerpt').value.trim();
+      const date     = document.getElementById('blog-date').value;
+
+      if (!title || !category || !excerpt || !date) {
+        showToast('Title, category, excerpt and date are required.', 'error');
+        return;
+      }
+
+      const status = document.getElementById('blog-status').value;
+      const slug   = document.getElementById('blog-slug').value.trim() || slugify(title);
+      const editId = document.getElementById('blog-edit-id').value;
+
+      let blogs = loadBlogs();
+
+      if (editId) {
+        blogs = blogs.map(b => b.id === editId
+          ? { ...b, title, category, excerpt, status, published: date, slug, displayDate: formatDisplayDate(date) }
+          : b
+        );
+        showToast('Article updated.');
+      } else {
+        blogs.unshift({ id: uid(), title, category, excerpt, status, published: date, slug, displayDate: formatDisplayDate(date) });
+        showToast('Article added.');
+      }
+
+      saveBlogs(blogs);
+      closeModal('blog-modal-overlay');
+      renderBlogs();
+    });
+
+    // Confirm delete
+    window.confirmDeleteBlog = (id) => {
+      const blogs = loadBlogs();
+      const b = blogs.find(x => x.id === id);
+      if (!b) return;
+
+      document.querySelectorAll('.cms-confirm-row').forEach(r => r.remove());
+
+      blogsTbody.querySelectorAll('tr').forEach(row => {
+        const btn = row.querySelector(`[onclick="confirmDeleteBlog('${id}')"]`);
+        if (btn) {
+          const confirmRow = document.createElement('tr');
+          confirmRow.className = 'cms-confirm-row';
+          confirmRow.innerHTML = `<td colspan="6"><div class="cms-confirm-msg">
+            Delete "<strong>${escHtml(b.title)}</strong>"? This cannot be undone.
+            <span style="display:flex;gap:0.5rem">
+              <button class="cms-btn cms-btn-danger cms-btn-sm" onclick="deleteBlog('${escHtml(id)}')" type="button">Yes, delete</button>
+              <button class="cms-btn cms-btn-ghost cms-btn-sm" onclick="this.closest('tr').remove()" type="button">Cancel</button>
+            </span>
+          </div></td>`;
+          row.insertAdjacentElement('afterend', confirmRow);
+        }
+      });
+    };
+
+    window.deleteBlog = (id) => {
+      let blogs = loadBlogs().filter(b => b.id !== id);
+      saveBlogs(blogs);
+      showToast('Article deleted.');
+      renderBlogs();
+    };
+
+    // ── SECURITY HELPER ──────────────────────────────────────────
+    const escHtml = (str) => String(str ?? '')
+      .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+      .replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+
+    // ── INIT ─────────────────────────────────────────────────────
+    renderVideos();
+    renderBlogs();
+  </script>
+</body>
+</html>

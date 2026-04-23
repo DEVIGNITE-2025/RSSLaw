@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CMS Login | RSS Inc.</title>
+  <meta name="description" content="Secure CMS login access for RSS Inc. content administration.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="login-page">
+  <div class="page-shell">
+    <header class="site-header" id="top">
+      <div class="container-wide nav-wrap">
+        <a class="brand" href="index.html" aria-label="RSS Inc. Home">
+          <span class="brand-mark" aria-hidden="true">
+            <img src="images/logo.png" alt="">
+          </span>
+          <span class="brand-copy">
+            <strong>RSS Inc.</strong>
+            <small>Legal | Regulatory | Compliance</small>
+          </span>
+        </a>
+
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Toggle navigation">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <nav class="site-nav" id="site-nav" aria-label="Primary navigation">
+          <a href="index.html">Home</a>
+          <a href="about.html">About Us</a>
+          <a href="services.html">Our Services</a>
+          <a href="blogs-and-socials.html">Blogs &amp; Socials</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="page-hero login-page-hero">
+        <div class="container-wide page-hero-grid">
+          <div class="page-hero-copy reveal fade-up">
+            <span class="section-tag">CMS Access</span>
+            <h1>Secure Login</h1>
+            <p class="lead">This secure portal is reserved for authorized content administrators managing legal publications and social updates.</p>
+            <p class="login-access-note" role="note">Authorized administrators only. Unauthorized access is prohibited and monitored.</p>
+          </div>
+
+          <div class="form-card section-shell reveal fade-left login-form-card">
+            <span class="detail-label">Restricted Area</span>
+            <h3>Content Management Login</h3>
+            <form class="contact-form cms-login-form" aria-label="CMS login form" novalidate>
+              <div class="field-grid">
+                <label for="cms-identity">
+                  <span>Email or Username <em>*</em></span>
+                  <input id="cms-identity" type="text" name="identity" placeholder="Email or username" autocomplete="username" required aria-describedby="cms-identity-error">
+                </label>
+                <p id="cms-identity-error" class="form-error" aria-live="polite"></p>
+              </div>
+
+              <div class="field-grid">
+                <label for="cms-password">
+                  <span>Password <em>*</em></span>
+                  <input id="cms-password" type="password" name="password" placeholder="Password" autocomplete="current-password" required minlength="8" aria-describedby="cms-password-error">
+                </label>
+                <p id="cms-password-error" class="form-error" aria-live="polite"></p>
+              </div>
+
+              <button class="button button-primary" type="submit">Login</button>
+              <p class="login-form-note">By signing in, you confirm you are an authorized administrator acting under firm policy.</p>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container-wide footer-grid">
+        <div>
+          <h3>Contact</h3>
+          <div class="footer-contact">
+            <a href="mailto:connect@rsslaw.co.za">connect@rsslaw.co.za</a>
+            <a href="tel:+27115681158">+27 11 568 1158</a>
+            <p>Unit 1, Block A, Upper Grayston Office Park, Sandton, South Africa</p>
+          </div>
+        </div>
+
+        <div>
+          <h3>Information</h3>
+          <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="about.html">About Us</a>
+            <a href="services.html">Our Services</a>
+            <a href="blogs-and-socials.html">Blogs &amp; Socials</a>
+            <a href="contact.html">Contact</a>
+          </div>
+        </div>
+
+        <div>
+          <h3>Policies</h3>
+          <div class="footer-links">
+            <a href="index.html">Terms &amp; Conditions</a>
+            <a href="index.html">Privacy Policy</a>
+          </div>
+        </div>
+
+        <div class="footer-brand">
+          <a class="brand" href="index.html" aria-label="RSS Inc. Home">
+            <span class="brand-mark" aria-hidden="true">
+              <img src="images/logo.png" alt="">
+            </span>
+            <span class="brand-copy">
+              <strong>RSS Inc.</strong>
+              <small>Legal | Regulatory | Compliance</small>
+            </span>
+          </a>
+          <span class="detail-label">Professional Information</span>
+          <div class="detail-stack">
+            <p>Registration Number: 2024/622929/21</p>
+            <p>Legal Practice Number: F72676</p>
+          </div>
+        </div>
+      </div>
+      <div class="container-wide footer-bottom">
+        <p>&copy; 2024 RSS Inc. All Rights Reserved.</p>
+        <a class="scroll-top" href="#top" aria-label="Back to top">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M12 4.75a1.25 1.25 0 0 1 .88.37l4 4a1.25 1.25 0 1 1-1.76 1.76l-1.87-1.87V18a1.25 1.25 0 1 1-2.5 0V9.01l-1.87 1.87a1.25 1.25 0 1 1-1.76-1.76l4-4A1.25 1.25 0 0 1 12 4.75Z"></path>
+          </svg>
+        </a>
+      </div>
+    </footer>
+  </div>
+
+  <script src="cms-auth-bridge.js"></script>
+  <script src="script.js"></script>
+  <script src="login.js"></script>
+</body>
+</html>
