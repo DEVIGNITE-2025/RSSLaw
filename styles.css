@@ -1854,6 +1854,12 @@ textarea {
   height: fit-content;
 }
 
+.services-sidebar .sidebar-card {
+  max-height: calc(100vh - 106px);
+  overflow-y: auto;
+  scrollbar-gutter: stable;
+}
+
 .services-page .services-sidebar {
   order: -1;
 }
@@ -2053,19 +2059,62 @@ textarea {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 52px;
-  height: 52px;
-  border: 1px solid rgba(255, 255, 255, 0.14);
+  width: auto;
+  height: auto;
+  padding: 0;
+  border: 0;
   color: var(--white);
 }
 
 .scroll-top svg {
-  width: 28px;
-  height: 28px;
+  width: 44px;
+  height: 44px;
 }
 
-.scroll-top svg path {
-  fill: currentColor;
+.scroll-top svg * {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.services-pre-footer-top {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 28px;
+}
+
+.services-pre-footer-top .scroll-top {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--navy);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  animation: scrollTopBounce 1.6s ease-in-out infinite;
+}
+
+.services-pre-footer-top .scroll-top-label {
+  font-size: 0.76rem;
+  line-height: 1;
+}
+
+@keyframes scrollTopBounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-5px);
+  }
+  65% {
+    transform: translateY(0);
+  }
+  82% {
+    transform: translateY(-2px);
+  }
 }
 
 .reveal {
