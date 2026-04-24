@@ -149,3 +149,14 @@ window.addEventListener('resize', () => {
     closeMenu();
   }
 });
+
+const subjectInput = document.querySelector('#subject-line');
+
+if (subjectInput) {
+  const queryParams = new URLSearchParams(window.location.search);
+  const selectedService = queryParams.get('service');
+
+  if (selectedService && selectedService.trim()) {
+    subjectInput.value = selectedService.trim();
+  }
+}

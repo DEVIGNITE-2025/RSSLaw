@@ -1683,6 +1683,29 @@ textarea {
   gap: 14px;
 }
 
+.service-intro-card,
+.service-card {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.service-card-copy,
+.service-intro-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.service-card-action {
+  margin-top: auto;
+  padding-top: 4px;
+}
+
+.service-card-action .button {
+  min-height: 48px;
+}
+
 .services-layout {
   display: grid;
   grid-template-columns: minmax(0, 1fr) 320px;
