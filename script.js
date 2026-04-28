@@ -160,3 +160,173 @@ if (subjectInput) {
     subjectInput.value = selectedService.trim();
   }
 }
+
+// ─── Services category filter ───────────────────────────────────────────
+const svcFilter = document.getElementById('svc-filter');
+const svcGrid   = document.getElementById('svc-grid');
+const noResults = document.getElementById('svc-no-results');
+
+if (svcFilter && svcGrid) {
+  const filterBtns = Array.from(svcFilter.querySelectorAll('.svc-filter-btn'));
+  const svcCards   = Array.from(svcGrid.querySelectorAll('.svc-card'));
+
+  // ── Dropdown helpers ──
+  const allDropdowns = Array.from(svcFilter.querySelectorAll('.svc-cat-dropdown'));
+
+  // Show all cards and mark first button active on load
+  svcCards.forEach((c) => c.removeAttribute('data-hidden'));
+  if (filterBtns[0]) filterBtns[0].classList.add('is-active');
+
+  const openDrop = (dropdown, btn) => {
+    dropdown.classList.add('is-open');
+    btn.setAttribute('aria-expanded', 'true');
+  };
+
+  const closeDrop = (dropdown, btn) => {
+    dropdown.classList.remove('is-open');
+    btn.setAttribute('aria-expanded', 'false');
+  };
+
+  const closeAllDrops = () => {
+    allDropdowns.forEach((drop) => {
+      drop.classList.remove('is-open');
+      const triggerBtn = svcFilter.querySelector(`[aria-controls="${drop.id}"]`);
+      if (triggerBtn) triggerBtn.setAttribute('aria-expanded', 'false');
+    });
+  };
+
+  // ── Card filter ──
+  const applyFilter = (category) => {
+    let visibleCount = 0;
+
+    svcCards.forEach((card) => {
+      const matches = category === 'all' || card.dataset.category === category;
+      if (matches) {
+        card.removeAttribute('data-hidden');
+        visibleCount++;
+      } else {
+        card.setAttribute('data-hidden', '');
+      }
+    });
+
+    if (noResults) {
+      noResults.classList.toggle('is-visible', visibleCount === 0);
+    }
+  };
+
+  // ── Filter button clicks ──
+  filterBtns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const filter   = btn.dataset.filter || 'all';
+      const dropId   = btn.getAttribute('aria-controls');
+      const dropdown = dropId ? document.getElementById(dropId) : null;
+      const isExpanded = btn.getAttribute('aria-expanded') === 'true';
+
+      // Update active state
+      filterBtns.forEach((b) => b.classList.remove('is-active'));
+      btn.classList.add('is-active');
+
+      // Freeze scroll position before filter changes page height
+      const gridTop = svcGrid.getBoundingClientRect().top + window.scrollY - 100;
+
+      applyFilter(filter);
+
+      // Restore scroll so page height change doesn't throw the user around
+      window.scrollTo({ top: gridTop, behavior: 'instant' });
+
+      if (dropdown) {
+        closeAllDrops();
+        if (!isExpanded) {
+          openDrop(dropdown, btn);
+          btn.classList.add('is-active');
+        }
+      } else {
+        closeAllDrops();
+      }
+    });
+  });
+
+  // ── Service item clicks (scroll to card, apply category filter) ──
+  svcFilter.addEventListener('click', (e) => {
+    const item = e.target.closest('.svc-cat-item');
+    if (!item) return;
+    e.preventDefault();
+
+    const category = item.dataset.category;
+    const targetId = item.getAttribute('href').replace('#', '');
+    const targetCard = document.getElementById(targetId);
+
+    // Apply category filter so the card is visible
+    filterBtns.forEach((b) => b.classList.remove('is-active'));
+    const catBtn = filterBtns.find((b) => b.dataset.filter === category);
+    if (catBtn) catBtn.classList.add('is-active');
+    applyFilter(category);
+
+    // Highlight active item
+    Array.from(svcFilter.querySelectorAll('.svc-cat-item')).forEach((i) => i.classList.remove('is-active'));
+    item.classList.add('is-active');
+
+    // Scroll card to centre of viewport
+    if (targetCard) {
+      setTimeout(() => {
+        const cardRect  = targetCard.getBoundingClientRect();
+        const cardMid   = cardRect.top + window.scrollY + cardRect.height / 2;
+        const scrollTo  = cardMid - window.innerHeight / 2;
+        window.scrollTo({ top: Math.max(0, scrollTo), behavior: 'smooth' });
+      }, 50);
+    }
+  });
+
+  // Deep-link: ?category=technology
+  const urlParams = new URLSearchParams(window.location.search);
+  const preselect = urlParams.get('category');
+  if (preselect) {
+    const target = filterBtns.find((b) => b.dataset.filter === preselect);
+    if (target) {
+      filterBtns.forEach((b) => b.classList.remove('is-active'));
+      target.classList.add('is-active');
+      applyFilter(preselect);
+      const dropId = target.getAttribute('aria-controls');
+      if (dropId) {
+        const drop = document.getElementById(dropId);
+        if (drop) openDrop(drop, target);
+      }
+    }
+  }
+
+  // Search bar
+  const searchInput = document.getElementById('svc-search');
+  if (searchInput) {
+    searchInput.addEventListener('input', () => {
+      const query = searchInput.value.trim().toLowerCase();
+
+      if (!query) {
+        // Restore: show all cards, re-activate first button
+        svcCards.forEach((c) => c.removeAttribute('data-hidden'));
+        filterBtns.forEach((b) => b.classList.remove('is-active'));
+        if (filterBtns[0]) filterBtns[0].classList.add('is-active');
+        return;
+      }
+
+      // On search: deactivate category filters, show matching cards
+      filterBtns.forEach((b) => b.classList.remove('is-active'));
+      let visibleCount = 0;
+
+      svcCards.forEach((card) => {
+        const text = card.textContent.toLowerCase();
+        const matches = text.includes(query);
+        if (matches) {
+          card.removeAttribute('data-hidden');
+          visibleCount++;
+        } else {
+          card.setAttribute('data-hidden', '');
+        }
+      });
+
+      if (noResults) {
+        noResults.classList.toggle('is-visible', visibleCount === 0);
+      }
+    });
+  }
+}
+

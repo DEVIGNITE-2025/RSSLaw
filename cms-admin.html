@@ -402,6 +402,87 @@
     .cms-textarea { resize: vertical; min-height: 90px; }
     .cms-input-hint { font-size: 0.73rem; color: #9ca3af; margin-top: 0.3rem; }
 
+    /* ── FILE UPLOAD ── */
+    .cms-form-divider { height: 1px; background: #f0ebe2; margin: 0.25rem 0 1rem; }
+    .cms-file-drop {
+      position: relative;
+      border: 1.5px dashed #d1cfc8;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: border-color 160ms, background 160ms;
+      background: #faf7f3;
+      overflow: hidden;
+    }
+    .cms-file-drop:hover,
+    .cms-file-drop:focus-within { border-color: #977443; background: #fdf9f4; }
+    .cms-file-drop.has-file { border-color: #977443; border-style: solid; background: #fdf9f4; }
+    .cms-file-input {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      cursor: pointer;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+    }
+    .cms-file-drop-inner {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      padding: 0.85rem 1rem;
+      pointer-events: none;
+      color: #6b7280;
+      font-size: 0.83rem;
+      font-weight: 500;
+    }
+    .cms-file-drop-inner svg { flex-shrink: 0; color: #977443; }
+    .cms-pdf-existing {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+      padding: 0.55rem 0.75rem;
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      border-radius: 5px;
+      font-size: 0.8rem;
+      color: #374151;
+      font-weight: 500;
+    }
+    .cms-pdf-existing svg { flex-shrink: 0; color: #16a34a; }
+    .cms-pdf-remove-btn {
+      font-family: 'Manrope', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #dc2626;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      margin-left: auto;
+      text-decoration: underline;
+      white-space: nowrap;
+    }
+    .cms-pdf-remove-btn:hover { color: #991b1b; }
+    .cms-pdf-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25em;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: #065f46;
+      background: #d1fae5;
+      border-radius: 3px;
+      padding: 0.2em 0.55em;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    .cms-pdf-badge:hover { background: #a7f3d0; }
+    .cms-pdf-badge-ext { color: #1e40af; background: #dbeafe; }
+    .cms-pdf-badge-ext:hover { background: #bfdbfe; }
+
     /* ── TOAST ── */
     .cms-toast {
       position: fixed;
@@ -577,6 +658,7 @@
                 <th>Category</th>
                 <th class="desc-cell">Excerpt</th>
                 <th>Date</th>
+                <th style="width:60px">PDF</th>
                 <th style="width:100px">Status</th>
                 <th style="width:120px">Actions</th>
               </tr>
@@ -675,6 +757,32 @@
               <input class="cms-input" type="text" id="blog-slug" placeholder="auto-generated if blank">
               <p class="cms-input-hint">URL identifier, lowercase, hyphens only.</p>
             </div>
+          </div>
+
+          <div class="cms-form-divider"></div>
+
+          <div class="cms-form-group">
+            <label class="cms-label" for="blog-pdf">Article PDF</label>
+            <div class="cms-file-drop" id="blog-pdf-drop">
+              <input type="file" id="blog-pdf" accept=".pdf" class="cms-file-input">
+              <div class="cms-file-drop-inner">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="12" x2="12" y2="18"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
+                <span id="blog-pdf-name">Click to upload PDF</span>
+              </div>
+            </div>
+            <p class="cms-input-hint">Optional. Max 2 MB. PDF only. Stored in browser local storage.</p>
+            <div id="blog-pdf-existing" class="cms-pdf-existing" style="display:none">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+              <span id="blog-pdf-existing-name"></span>
+              <button type="button" id="blog-pdf-remove" class="cms-pdf-remove-btn">Remove</button>
+            </div>
+            <input type="hidden" id="blog-pdf-removed" value="0">
+          </div>
+
+          <div class="cms-form-group">
+            <label class="cms-label" for="blog-pdf-url">Or PDF Link</label>
+            <input class="cms-input" type="url" id="blog-pdf-url" placeholder="https://example.com/article.pdf">
+            <p class="cms-input-hint">Paste a link to an externally hosted PDF. Ignored if a file is uploaded above.</p>
           </div>
         </form>
       </div>
@@ -936,16 +1044,24 @@
       document.getElementById('stat-drafts').textContent    = drafts;
 
       if (!blogs.length) {
-        blogsTbody.innerHTML = `<tr><td colspan="6"><div class="cms-empty"><strong>No articles yet</strong>Add your first blog article above.</div></td></tr>`;
+        blogsTbody.innerHTML = `<tr><td colspan="7"><div class="cms-empty"><strong>No articles yet</strong>Add your first blog article above.</div></td></tr>`;
         return;
       }
 
-      blogsTbody.innerHTML = blogs.map(b => `
+      blogsTbody.innerHTML = blogs.map(b => {
+        let pdfCell = '<span style="color:#9ca3af">—</span>';
+        if (b.pdfDataUrl && b.pdfName) {
+          pdfCell = `<a class="cms-pdf-badge" href="${b.pdfDataUrl}" download="${escHtml(b.pdfName)}" title="Download ${escHtml(b.pdfName)}">↓ PDF</a>`;
+        } else if (b.pdfUrl) {
+          pdfCell = `<a class="cms-pdf-badge cms-pdf-badge-ext" href="${escHtml(b.pdfUrl)}" target="_blank" rel="noopener noreferrer" title="Open PDF">↗ PDF</a>`;
+        }
+        return `
         <tr>
           <td class="title-cell">${escHtml(b.title)}</td>
           <td>${escHtml(b.category || '—')}</td>
           <td class="desc-cell">${escHtml(b.excerpt || '—')}</td>
           <td style="white-space:nowrap">${escHtml(formatDisplayDate(b.published))}</td>
+          <td>${pdfCell}</td>
           <td><span class="cms-status-badge ${b.status === 'published' ? 'published' : 'draft'}">${escHtml(b.status || 'published')}</span></td>
           <td>
             <div class="cms-row-actions">
@@ -955,7 +1071,8 @@
             </div>
           </td>
         </tr>
-      `).join('');
+      `;
+      }).join('');
     };
 
     // Open add
@@ -964,6 +1081,13 @@
       document.getElementById('blog-edit-id').value = '';
       document.getElementById('blog-form').reset();
       document.getElementById('blog-date').value = new Date().toISOString().split('T')[0];
+      // reset PDF fields
+      document.getElementById('blog-pdf').value = '';
+      document.getElementById('blog-pdf-url').value = '';
+      document.getElementById('blog-pdf-removed').value = '0';
+      document.getElementById('blog-pdf-existing').style.display = 'none';
+      document.getElementById('blog-pdf-name').textContent = 'Click to upload PDF';
+      document.getElementById('blog-pdf-drop').classList.remove('has-file');
       openModal('blog-modal-overlay');
       document.getElementById('blog-title').focus();
     });
@@ -974,6 +1098,31 @@
       if (!slugField.value.trim()) {
         slugField.value = slugify(document.getElementById('blog-title').value);
       }
+    });
+
+    // PDF file input — show filename + size
+    document.getElementById('blog-pdf').addEventListener('change', () => {
+      const file    = document.getElementById('blog-pdf').files[0];
+      const nameEl  = document.getElementById('blog-pdf-name');
+      const dropEl  = document.getElementById('blog-pdf-drop');
+      if (file) {
+        const kb = (file.size / 1024).toFixed(0);
+        nameEl.textContent = `${file.name} (${kb} KB)`;
+        dropEl.classList.add('has-file');
+        document.getElementById('blog-pdf-existing').style.display = 'none';
+      } else {
+        nameEl.textContent = 'Click to upload PDF';
+        dropEl.classList.remove('has-file');
+      }
+    });
+
+    // PDF remove button
+    document.getElementById('blog-pdf-remove').addEventListener('click', () => {
+      document.getElementById('blog-pdf-removed').value = '1';
+      document.getElementById('blog-pdf-existing').style.display = 'none';
+      document.getElementById('blog-pdf-name').textContent = 'Click to upload PDF';
+      document.getElementById('blog-pdf-drop').classList.remove('has-file');
+      document.getElementById('blog-pdf').value = '';
     });
 
     // Edit
@@ -989,6 +1138,22 @@
       document.getElementById('blog-excerpt').value   = b.excerpt || '';
       document.getElementById('blog-date').value      = b.published || '';
       document.getElementById('blog-slug').value      = b.slug || '';
+      // PDF fields
+      document.getElementById('blog-pdf').value = '';
+      document.getElementById('blog-pdf-removed').value = '0';
+      document.getElementById('blog-pdf-url').value = b.pdfUrl || '';
+      document.getElementById('blog-pdf-drop').classList.remove('has-file');
+      const existingDiv  = document.getElementById('blog-pdf-existing');
+      const existingName = document.getElementById('blog-pdf-existing-name');
+      const pdfNameEl    = document.getElementById('blog-pdf-name');
+      if (b.pdfDataUrl && b.pdfName) {
+        existingDiv.style.display = 'flex';
+        existingName.textContent = b.pdfName;
+        pdfNameEl.textContent = 'Replace PDF';
+      } else {
+        existingDiv.style.display = 'none';
+        pdfNameEl.textContent = 'Click to upload PDF';
+      }
       openModal('blog-modal-overlay');
     };
 
@@ -1004,26 +1169,54 @@
         return;
       }
 
-      const status = document.getElementById('blog-status').value;
-      const slug   = document.getElementById('blog-slug').value.trim() || slugify(title);
-      const editId = document.getElementById('blog-edit-id').value;
+      const status   = document.getElementById('blog-status').value;
+      const slug     = document.getElementById('blog-slug').value.trim() || slugify(title);
+      const editId   = document.getElementById('blog-edit-id').value;
+      const pdfFile  = document.getElementById('blog-pdf').files[0];
+      const pdfUrlIn = document.getElementById('blog-pdf-url').value.trim();
+      const removed  = document.getElementById('blog-pdf-removed').value === '1';
 
-      let blogs = loadBlogs();
+      const persistBlog = (pdfData) => {
+        let blogs = loadBlogs();
+        const base = { title, category, excerpt, status, published: date, slug, displayDate: formatDisplayDate(date) };
+        if (editId) {
+          blogs = blogs.map(b => b.id === editId ? { ...b, ...base, ...pdfData } : b);
+          showToast('Article updated.');
+        } else {
+          blogs.unshift({ id: uid(), ...base, ...pdfData });
+          showToast('Article added.');
+        }
+        saveBlogs(blogs);
+        closeModal('blog-modal-overlay');
+        renderBlogs();
+      };
 
-      if (editId) {
-        blogs = blogs.map(b => b.id === editId
-          ? { ...b, title, category, excerpt, status, published: date, slug, displayDate: formatDisplayDate(date) }
-          : b
-        );
-        showToast('Article updated.');
+      if (pdfFile) {
+        if (pdfFile.type !== 'application/pdf') {
+          showToast('Only PDF files are accepted.', 'error'); return;
+        }
+        if (pdfFile.size > 2 * 1024 * 1024) {
+          showToast('PDF must be under 2 MB to store in browser.', 'error'); return;
+        }
+        const reader = new FileReader();
+        reader.onload  = (e) => persistBlog({ pdfDataUrl: e.target.result, pdfName: pdfFile.name, pdfUrl: null });
+        reader.onerror = () => showToast('Failed to read the PDF file.', 'error');
+        reader.readAsDataURL(pdfFile);
+      } else if (removed) {
+        persistBlog({ pdfDataUrl: null, pdfName: null, pdfUrl: null });
+      } else if (pdfUrlIn) {
+        persistBlog({ pdfUrl: pdfUrlIn, pdfDataUrl: null, pdfName: null });
+      } else if (editId) {
+        // keep existing PDF untouched
+        const existing = loadBlogs().find(b => b.id === editId);
+        persistBlog({
+          pdfDataUrl: existing?.pdfDataUrl || null,
+          pdfName:    existing?.pdfName    || null,
+          pdfUrl:     existing?.pdfUrl     || null,
+        });
       } else {
-        blogs.unshift({ id: uid(), title, category, excerpt, status, published: date, slug, displayDate: formatDisplayDate(date) });
-        showToast('Article added.');
+        persistBlog({});
       }
-
-      saveBlogs(blogs);
-      closeModal('blog-modal-overlay');
-      renderBlogs();
     });
 
     // Confirm delete
@@ -1039,7 +1232,7 @@
         if (btn) {
           const confirmRow = document.createElement('tr');
           confirmRow.className = 'cms-confirm-row';
-          confirmRow.innerHTML = `<td colspan="6"><div class="cms-confirm-msg">
+          confirmRow.innerHTML = `<td colspan="7"><div class="cms-confirm-msg">
             Delete "<strong>${escHtml(b.title)}</strong>"? This cannot be undone.
             <span style="display:flex;gap:0.5rem">
               <button class="cms-btn cms-btn-danger cms-btn-sm" onclick="deleteBlog('${escHtml(id)}')" type="button">Yes, delete</button>

@@ -184,28 +184,72 @@ const createArticlePreviewCard = (article, index) => {
   meta.append(time);
 
   card.append(category, title, excerpt, meta);
+
+  // PDF link — uploaded file takes priority over external URL
+  if (article.pdfDataUrl && article.pdfName) {
+    const pdfLink = document.createElement('a');
+    pdfLink.className = 'button-link article-pdf-link';
+    pdfLink.href = article.pdfDataUrl;
+    pdfLink.download = article.pdfName;
+    pdfLink.setAttribute('aria-label', `Download PDF: ${article.title}`);
+    pdfLink.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink:0"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> Download PDF`;
+    card.append(pdfLink);
+  } else if (article.pdfUrl) {
+    const pdfLink = document.createElement('a');
+    pdfLink.className = 'button-link article-pdf-link';
+    pdfLink.href = article.pdfUrl;
+    pdfLink.target = '_blank';
+    pdfLink.rel = 'noopener noreferrer';
+    pdfLink.setAttribute('aria-label', `Read PDF: ${article.title}`);
+    pdfLink.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink:0"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg> Read PDF`;
+    card.append(pdfLink);
+  }
+
   return card;
 };
 
-const renderBlogsSocialsDynamicContent = () => {
-  const videosRoot = document.querySelector('[data-dynamic-list="featured-videos"]');
-  const articlesRoot = document.querySelector('[data-dynamic-list="article-previews"]');
+// Load articles: prefer CMS localStorage data, fall back to static seed data
+const loadCmsArticles = () => {
+  try {
+    const raw = localStorage.getItem('rss-cms-blogs');
+    if (raw) {
+      const parsed = JSON.parse(raw);
+      if (Array.isArray(parsed) && parsed.length > 0) {
+        return parsed.filter(a => a.status !== 'draft');
+      }
+    }
+  } catch (_) {}
+  return blogsSocialsData.articlePreviews;
+};
 
-  if (!videosRoot || !articlesRoot) {
-    return;
+const renderBlogsSocialsDynamicContent = () => {
+  const videosRoot   = document.querySelector('[data-dynamic-list="featured-videos"]');
+  const articlesRoot = document.querySelector('[data-dynamic-list="article-previews"]');
+  const allRoot      = document.querySelector('[data-dynamic-list="all-articles"]');
+
+  if (videosRoot) {
+    videosRoot.replaceChildren(
+      ...blogsSocialsData.featuredVideos
+        .slice(0, 3)
+        .map((video, index) => createFeaturedVideoCard(video, index))
+    );
   }
 
-  videosRoot.replaceChildren(
-    ...blogsSocialsData.featuredVideos
-      .slice(0, 3)
-      .map((video, index) => createFeaturedVideoCard(video, index))
-  );
+  const allArticles = loadCmsArticles();
 
-  articlesRoot.replaceChildren(
-    ...blogsSocialsData.articlePreviews
-      .slice(0, 6)
-      .map((article, index) => createArticlePreviewCard(article, index))
-  );
+  if (articlesRoot) {
+    articlesRoot.replaceChildren(
+      ...allArticles
+        .slice(0, 6)
+        .map((article, index) => createArticlePreviewCard(article, index))
+    );
+  }
+
+  if (allRoot) {
+    allRoot.replaceChildren(
+      ...allArticles.map((article, index) => createArticlePreviewCard(article, index))
+    );
+  }
 };
 
 const renderAdminTools = () => {
