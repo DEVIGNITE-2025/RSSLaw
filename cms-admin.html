@@ -796,6 +796,7 @@
   <!-- TOAST -->
   <div class="cms-toast" id="cms-toast" role="status" aria-live="polite"></div>
 
+  <script src="script.js"></script>
   <script src="cms-auth-bridge.js"></script>
   <script src="blogs-socials-data.js"></script>
   <script>
@@ -877,21 +878,21 @@
     });
 
     // ── SIDEBAR ACTIVE STATE ─────────────────────────────────────
-    const navLinks = document.querySelectorAll('[data-nav]');
-    const sections = ['overview', 'videos', 'blogs'].map(id => document.getElementById(`section-${id}`));
+    const cmsNavLinks = document.querySelectorAll('[data-nav]');
+    const cmsSections = ['overview', 'videos', 'blogs'].map(id => document.getElementById(`section-${id}`));
 
     const updateActiveNav = () => {
       let current = 'overview';
-      sections.forEach(sec => {
+      cmsSections.forEach(sec => {
         if (sec && window.scrollY + 80 >= sec.offsetTop) current = sec.id.replace('section-', '');
       });
-      navLinks.forEach(l => l.classList.toggle('active', l.dataset.nav === current));
+      cmsNavLinks.forEach(l => l.classList.toggle('active', l.dataset.nav === current));
     };
 
     window.addEventListener('scroll', updateActiveNav, { passive: true });
     updateActiveNav();
 
-    navLinks.forEach(link => {
+    cmsNavLinks.forEach(link => {
       link.addEventListener('click', (e) => {
         e.preventDefault();
         const target = document.querySelector(link.getAttribute('href'));

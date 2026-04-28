@@ -1,3 +1,106 @@
+/* ── Custom cursor ─────────────────────────────────────────── */
+(function () {
+  // Only run on devices with a precise pointer (mouse/trackpad), not touch
+  if (!window.matchMedia('(pointer: fine)').matches) return;
+
+  const dot = document.createElement('div');
+  dot.className = 'cursor-dot';
+  const ring = document.createElement('div');
+  ring.className = 'cursor-ring';
+  document.body.appendChild(dot);
+  document.body.appendChild(ring);
+
+  let mouseX = window.innerWidth / 2;
+  let mouseY = window.innerHeight / 2;
+  let ringX = mouseX;
+  let ringY = mouseY;
+  let hidden = true;
+
+  // Detect whether the element under the cursor sits on a dark background
+  function hasDarkBackground(el) {
+    let node = el;
+    while (node && node !== document.documentElement) {
+      const bg = window.getComputedStyle(node).backgroundColor;
+      if (!bg || bg === 'rgba(0, 0, 0, 0)' || bg === 'transparent') {
+        node = node.parentElement;
+        continue;
+      }
+      const parts = bg.match(/\d+(\.\d+)?/g);
+      if (parts && parts.length >= 3) {
+        const r = parseFloat(parts[0]);
+        const g = parseFloat(parts[1]);
+        const b = parseFloat(parts[2]);
+        const a = parts[3] !== undefined ? parseFloat(parts[3]) : 1;
+        // Skip near-transparent layers
+        if (a < 0.15) { node = node.parentElement; continue; }
+        // Relative luminance (perceived brightness)
+        const luma = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
+        return luma < 0.45;
+      }
+      node = node.parentElement;
+    }
+    return false;
+  }
+
+  document.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+
+    if (hidden) {
+      // Snap ring on first appearance so it doesn't slide in from a corner
+      ringX = mouseX;
+      ringY = mouseY;
+      hidden = false;
+      dot.classList.remove('is-hidden');
+      ring.classList.remove('is-hidden');
+    }
+
+    dot.style.left = mouseX + 'px';
+    dot.style.top  = mouseY + 'px';
+
+    // Switch cursor colour based on background brightness
+    const dark = hasDarkBackground(e.target);
+    dot.classList.toggle('is-on-dark', dark);
+    ring.classList.toggle('is-on-dark', dark);
+  });
+
+  document.addEventListener('mouseleave', () => {
+    dot.classList.add('is-hidden');
+    ring.classList.add('is-hidden');
+    hidden = true;
+  });
+
+  document.addEventListener('mouseenter', () => {
+    dot.classList.remove('is-hidden');
+    ring.classList.remove('is-hidden');
+    hidden = false;
+  });
+
+  // Expand ring when hovering interactive elements
+  const interactiveSelector = 'a, button, [role="button"], input, textarea, select, label';
+  document.addEventListener('mouseover', (e) => {
+    if (e.target.closest(interactiveSelector)) {
+      ring.classList.add('is-hovering');
+    }
+  });
+  document.addEventListener('mouseout', (e) => {
+    if (e.target.closest(interactiveSelector)) {
+      ring.classList.remove('is-hovering');
+    }
+  });
+
+  // Lerp loop — ring follows mouse with a slight lag
+  const LERP = 0.12;
+  function animate() {
+    ringX += (mouseX - ringX) * LERP;
+    ringY += (mouseY - ringY) * LERP;
+    ring.style.left = ringX + 'px';
+    ring.style.top  = ringY + 'px';
+    requestAnimationFrame(animate);
+  }
+  animate();
+}());
+
 const header = document.querySelector('.site-header');
 const navToggle = document.querySelector('.nav-toggle');
 const siteNav = document.querySelector('.site-nav');
