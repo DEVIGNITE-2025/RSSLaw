@@ -16,8 +16,26 @@
   let ringY = mouseY;
   let hidden = true;
 
-  // Detect whether the element under the cursor sits on a dark background
+  // Selectors whose background is definitively dark (includes gradient-based ones
+  // that getComputedStyle().backgroundColor can't detect since it returns transparent for gradients)
+  const DARK_SELECTORS = [
+    '.hero',
+    '.page-hero',
+    '.site-header',
+    '.site-footer',
+    '.section-dark',
+    '.contact-hero-wrap',
+    '.cms-topbar',
+    '.cms-sidebar'
+  ].join(',');
+
+  // Detect whether the element under the cursor sits on a dark background.
+  // Strategy: class-based check first (handles gradients), then luminance walk for solid colors.
   function hasDarkBackground(el) {
+    // 1. Check for known dark containers (works even when background is a gradient)
+    if (el.closest && el.closest(DARK_SELECTORS)) return true;
+
+    // 2. Walk up the DOM and measure luminance for solid background colors
     let node = el;
     while (node && node !== document.documentElement) {
       const bg = window.getComputedStyle(node).backgroundColor;
@@ -25,15 +43,13 @@
         node = node.parentElement;
         continue;
       }
-      const parts = bg.match(/\d+(\.\d+)?/g);
+      const parts = bg.match(/[\d.]+/g);
       if (parts && parts.length >= 3) {
         const r = parseFloat(parts[0]);
         const g = parseFloat(parts[1]);
         const b = parseFloat(parts[2]);
         const a = parts[3] !== undefined ? parseFloat(parts[3]) : 1;
-        // Skip near-transparent layers
         if (a < 0.15) { node = node.parentElement; continue; }
-        // Relative luminance (perceived brightness)
         const luma = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
         return luma < 0.45;
       }
