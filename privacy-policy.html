@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy | RSS Inc.</title>
+  <meta name="description" content="Data Privacy Policy for RSS Inc. — Legal, Regulatory and Compliance.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* ── Hero ── */
+    .legal-hero {
+      background: var(--clr-navy, #0d1b2e);
+      padding: 5rem 0 3.5rem;
+    }
+    .legal-hero h1 {
+      color: #fff;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      margin: 0 0 0.5rem;
+    }
+    .legal-hero p {
+      color: rgba(255,255,255,0.55);
+      font-size: 0.9rem;
+      margin: 0;
+    }
+
+    /* ── Page layout ── */
+    .legal-body {
+      padding: 3.5rem 0 7rem;
+      background: #fff;
+    }
+    .legal-layout {
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: 3.5rem;
+      align-items: start;
+    }
+
+    /* ── Sticky sidebar TOC ── */
+    .legal-toc-wrap {
+      position: sticky;
+      top: 5.5rem;
+      max-height: calc(100vh - 7rem);
+      overflow-y: auto;
+      scrollbar-width: thin;
+    }
+    .legal-toc-wrap::-webkit-scrollbar { width: 4px; }
+    .legal-toc-wrap::-webkit-scrollbar-thumb { background: #d0ccc3; border-radius: 2px; }
+
+    .legal-toc {
+      background: #f7f5f0;
+      border-radius: 6px;
+      padding: 1.5rem 1.25rem;
+    }
+    .legal-toc-title {
+      font-family: 'Manrope', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #888;
+      margin: 0 0 1rem;
+    }
+    .legal-toc nav {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .toc-section-label {
+      font-family: 'Manrope', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: #0d1b2e;
+      padding: 0.55rem 0.75rem 0.3rem;
+      margin-top: 0.5rem;
+      display: block;
+      text-decoration: none;
+      border-radius: 4px;
+      transition: background 0.15s, color 0.15s;
+    }
+    .toc-section-label:first-child { margin-top: 0; }
+    a.toc-section-label:hover {
+      background: #ede9e0;
+      color: #0d1b2e;
+    }
+    a.toc-section-label.active {
+      background: #0d1b2e;
+      color: #fff;
+    }
+    .legal-toc a {
+      font-family: 'Manrope', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: #555;
+      text-decoration: none;
+      padding: 0.35rem 0.75rem 0.35rem 1.25rem;
+      border-radius: 4px;
+      display: block;
+      transition: background 0.15s, color 0.15s;
+      line-height: 1.35;
+    }
+    .legal-toc a:hover {
+      background: #ede9e0;
+      color: #0d1b2e;
+    }
+    .legal-toc a.active {
+      background: #0d1b2e;
+      color: #fff;
+      font-weight: 600;
+    }
+
+    /* ── Document content ── */
+    .legal-doc {
+      font-family: 'Manrope', sans-serif;
+      color: #1a1a2e;
+      line-height: 1.85;
+      font-size: 0.97rem;
+    }
+    .legal-effective {
+      font-size: 0.82rem;
+      color: #999;
+      margin-bottom: 3rem;
+      font-style: italic;
+    }
+    .legal-section {
+      padding-top: 1rem;
+      margin-bottom: 3.5rem;
+      scroll-margin-top: 6rem;
+    }
+    .legal-section:last-child { margin-bottom: 0; }
+    .legal-doc h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.75rem;
+      font-weight: 700;
+      margin: 0 0 2rem;
+      color: #0d1b2e;
+      border-bottom: 2px solid #e8e4d9;
+      padding-bottom: 0.65rem;
+    }
+    .legal-subsection {
+      margin-bottom: 3rem;
+      padding-bottom: 0;
+      scroll-margin-top: 6rem;
+    }
+    .legal-subsection:last-child {
+      margin-bottom: 0;
+    }
+    .legal-doc h3 {
+      font-family: 'Manrope', sans-serif;
+      font-size: 0.92rem;
+      font-weight: 700;
+      margin: 0 0 1rem;
+      color: #0d1b2e;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .legal-doc p {
+      margin: 0.5rem 0;
+    }
+    .legal-doc .clause {
+      display: flex;
+      gap: 1rem;
+      margin: 0.75rem 0;
+    }
+    .legal-doc .clause .num {
+      min-width: 3.5rem;
+      font-weight: 600;
+      color: #666;
+      flex-shrink: 0;
+      padding-top: 0.05em;
+    }
+    .legal-doc .clause-sub {
+      display: flex;
+      gap: 1rem;
+      margin: 0.6rem 0 0.6rem 3.5rem;
+    }
+    .legal-doc .clause-sub .num {
+      min-width: 4.5rem;
+      font-weight: 600;
+      color: #888;
+      flex-shrink: 0;
+      padding-top: 0.05em;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 900px) {
+      .legal-layout {
+        grid-template-columns: 1fr;
+      }
+      .legal-toc-wrap {
+        position: static;
+        max-height: none;
+        overflow: visible;
+      }
+      .legal-toc {
+        display: none;
+      }
+      .legal-toc.open {
+        display: block;
+      }
+      .legal-toc-toggle {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        background: #0d1b2e;
+        color: #fff;
+        border: none;
+        border-radius: 6px;
+        padding: 0.65rem 1rem;
+        font-family: 'Manrope', sans-serif;
+        font-size: 0.82rem;
+        font-weight: 700;
+        cursor: pointer;
+        margin-bottom: 0.75rem;
+        width: 100%;
+        justify-content: space-between;
+      }
+    }
+    @media (min-width: 901px) {
+      .legal-toc-toggle { display: none; }
+    }
+    @media (max-width: 600px) {
+      .legal-doc .clause-sub { margin-left: 1.5rem; }
+    }
+
+    @media (max-width: 900px) {
+      .pdf-download-wrap {
+        grid-column: auto;
+      }
+    }
+
+    /* ── Download PDF button ── */
+    .pdf-download-wrap {
+      margin-top: 3rem;
+      padding-top: 2.5rem;
+      grid-column: 2;
+      text-align: center;
+    }
+    .pdf-download-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      padding: 0.8rem 1.75rem;
+      background: #0d1b2e;
+      color: #fff;
+      font-family: 'Manrope', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .pdf-download-btn:hover { background: #1c3254; }
+    .pdf-download-btn svg { flex-shrink: 0; }
+    @media print {
+      .site-header, .legal-hero, .legal-toc-wrap, .pdf-download-wrap, .site-footer { display: none !important; }
+      .legal-body { padding: 0; }
+      .legal-layout { display: block; }
+      .legal-doc { font-size: 10pt; line-height: 1.6; color: #000; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-shell">
+    <header class="site-header" id="top">
+      <div class="container-wide nav-wrap">
+        <a class="brand" href="index.html" aria-label="RSS Inc. Home">
+          <span class="brand-mark" aria-hidden="true">
+            <img src="images/logo.png" alt="">
+          </span>
+          <span class="brand-copy">
+            <strong>RSS Inc.</strong>
+            <small>Legal | Regulatory | Compliance</small>
+          </span>
+        </a>
+
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Toggle navigation">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <nav class="site-nav" id="site-nav" aria-label="Primary navigation">
+          <a href="index.html">Home</a>
+          <a href="about.html">About Us</a>
+          <a href="services.html">Our Services</a>
+          <a href="blogs-and-socials.html">Blogs &amp; Socials</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="legal-hero">
+        <div class="container-wide">
+          <h1>Data Privacy Policy</h1>
+          <p>RSS Law | Reg No 2014/219732/07</p>
+        </div>
+      </section>
+
+      <section class="legal-body">
+        <div class="container-wide">
+          <div class="legal-layout">
+
+            <!-- ── Sticky sidebar TOC ── -->
+            <div class="legal-toc-wrap">
+              <button class="legal-toc-toggle" aria-expanded="false" aria-controls="legal-toc-nav">
+                Quick Reference
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 5l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+              <div class="legal-toc" id="legal-toc-nav">
+                <p class="legal-toc-title">Quick Reference</p>
+                <nav aria-label="Document sections">
+                  <a href="#s1" class="toc-section-label">1. Purpose</a>
+                  <a href="#s2" class="toc-section-label">2. Privacy Statement</a>
+                  <a href="#s3" class="toc-section-label">3. Data Collection</a>
+                  <a href="#s4" class="toc-section-label">4. Use of Data</a>
+                  <a href="#s5" class="toc-section-label">5. Storing of Data</a>
+                  <a href="#s6" class="toc-section-label">6. Security of Data</a>
+                  <a href="#s7" class="toc-section-label">7. Use of Cookies</a>
+                  <a href="#s8" class="toc-section-label">8. RIC Act</a>
+                  <a href="#s9" class="toc-section-label">9. Monitoring &amp; Recording</a>
+                  <a href="#s10" class="toc-section-label">10. Revision</a>
+                </nav>
+              </div>
+            </div>
+
+            <!-- ── Document body ── -->
+            <div class="legal-doc" id="privacy-content">
+              <p class="legal-effective">Last updated: 2025</p>
+
+              <!-- ── Section 1 ── -->
+              <div class="legal-subsection" id="s1">
+                <h2>1. Purpose</h2>
+                <div class="clause"><span class="num">1.1.</span><span>Your privacy and trust are of utmost importance to us. This privacy policy outlines the data privacy practices that the Company, its employees and internal stakeholders abide by.</span></div>
+              </div>
+
+              <!-- ── Section 2 ── -->
+              <div class="legal-subsection" id="s2">
+                <h2>2. Privacy Statement</h2>
+                <div class="clause"><span class="num">2.1.</span><span>The Company is committed to the adherence of data protection laws of South Africa and adheres to processing information accordingly.</span></div>
+                <div class="clause"><span class="num">2.2.</span><span>Provided it is reasonably possible, we will try to use or disclose your personal information only in the manner stated in this Privacy Policy.</span></div>
+                <div class="clause"><span class="num">2.3.</span><span>We pledge that collection of information will be done lawfully and contractually with consent of our clients and third parties in line with their expectations.</span></div>
+                <div class="clause"><span class="num">2.4.</span><span>We will strive to ensure data integrity. Information collected will be accurate and not deceptive.</span></div>
+                <div class="clause"><span class="num">2.5.</span><span>We strive to be transparent with our clients in how we aim to use personal information and how to keep this data secure.</span></div>
+                <div class="clause"><span class="num">2.6.</span><span>Security standards will ensure that all information collected will be protected against unauthorised and unlawful access. Information collected will be used for only the purposed agreed to contractually.</span></div>
+                <div class="clause"><span class="num">2.7.</span><span>You do not have to give us personal information in order to visit or access the freely available sections of our Website. Some services on the Website may, however, be restricted to subscribers only. In order for you to use such subscriber services we will need some personal information about you. The information will be collected when you register with us.</span></div>
+                <div class="clause"><span class="num">2.8.</span><span>All your personal information will be collected, stored and used in accordance with this Privacy Policy and you consent to such use when you subscribe on the Website.</span></div>
+              </div>
+
+              <!-- ── Section 3 ── -->
+              <div class="legal-subsection" id="s3">
+                <h2>3. Data Collection</h2>
+                <div class="clause"><span class="num">3.1.</span><span>We may collect and process the following data about you:</span></div>
+                <div class="clause-sub"><span class="num">3.1.1.</span><span>Information that you provide by filling in forms on the Website. This includes information provided at the time of registering to use the Website, booking tickets, subscribing to our services, posting material or requesting further services.</span></div>
+                <div class="clause-sub"><span class="num">3.1.2.</span><span>If you contact us, we may keep a record of that correspondence.</span></div>
+                <div class="clause-sub"><span class="num">3.1.3.</span><span>Details of your visits to the Website including, but not limited to, traffic data, location data, weblogs and other communication data and the resources that you access.</span></div>
+                <div class="clause"><span class="num">3.2.</span><span>We may collect information about your computer, including where available your IP address, operating system and browser type.</span></div>
+                <div class="clause"><span class="num">3.3.</span><span>By submitting your personal data, you agree to the transfer, storing or processing. We will take all steps reasonably necessary to ensure that your data is treated securely and in accordance with this privacy policy.</span></div>
+                <div class="clause"><span class="num">3.4.</span><span>We do not guarantee the security of your data transmitted to the Website and any transmission is at your own risk.</span></div>
+                <div class="clause"><span class="num">3.5.</span><span>Clients have the choice on which data to avail to us, and this will only be used for the purposes expected by our clients, and laid out herein this policy.</span></div>
+                <div class="clause"><span class="num">3.6.</span><span>Clients can control the use of their data for marketing purposes through an opt-out option.</span></div>
+                <div class="clause"><span class="num">3.7.</span><span>Personal information may not be collected from minors except through their guardians.</span></div>
+                <div class="clause"><span class="num">3.8.</span><span>The data collected may be directly or indirectly attained from and for our clients to ensure that we deliver on successful outcomes and to help us improve our services to clients (e.g., Surveys).</span></div>
+              </div>
+
+              <!-- ── Section 4 ── -->
+              <div class="legal-subsection" id="s4">
+                <h2>4. Use of Data</h2>
+                <div class="clause"><span class="num">4.1.</span><span>We use information held about you in the following ways:</span></div>
+                <div class="clause-sub"><span class="num">4.1.1.</span><span>to ensure that content from the Website is presented in the most effective manner for you and for your computer;</span></div>
+                <div class="clause-sub"><span class="num">4.1.2.</span><span>to provide you with information, products or services that you request from us or which we feel may interest you, where you have consented to be contacted for such purposes;</span></div>
+                <div class="clause-sub"><span class="num">4.1.3.</span><span>to allow you to participate in interactive features of our service, when you choose to do so;</span></div>
+                <div class="clause-sub"><span class="num">4.1.4.</span><span>to notify you about changes to our service;</span></div>
+                <div class="clause-sub"><span class="num">4.1.5.</span><span>With client consent, data may be statistically and analytically used to identify trends to continuously improve our business offering (e.g., to improve usage and effectiveness and reporting) and to potentially provide additional products and services to serve you. Consent may not be requested if the data is anonymised;</span></div>
+                <div class="clause-sub"><span class="num">4.1.6.</span><span>We will only share your personal information if required by law; to protect our clients; to protect the constitution; to maintain safety and security of our offerings; or in order to enforce or apply the Terms and Conditions of website policy; or to protect the rights, property, or safety of us our customers, or others.</span></div>
+                <div class="clause"><span class="num">4.2.</span><span>Processing of data may occur manually or automatically.</span></div>
+                <div class="clause"><span class="num">4.3.</span><span>We may contact you by email, post or telephone in relation to our goods and services unless you have asked us not to and may pass on these details to service providers for the relevant service for which you have registered. We will not pass on your data to selected third parties to use your data unless you have proactively opted in.</span></div>
+                <div class="clause"><span class="num">4.4.</span><span>If you are a new user, and where we permit selected third parties to use your data, we (or they) will contact you by electronic means only if you have consented to this.</span></div>
+                <div class="clause"><span class="num">4.5.</span><span>If you do not want us to use your data in this way, or to pass your details on to third parties for marketing purposes, please let us know by emailing us on the email address available on our website.</span></div>
+                <div class="clause"><span class="num">4.6.</span><span>The Website may, from time to time, contain links to and from the websites of our partner networks, advertisers and affiliates. If you follow a link to any of these websites, please note that these websites have their own privacy policies and that we do not accept any responsibility or liability for these policies. Please check these policies before you submit any personal data to these websites.</span></div>
+              </div>
+
+              <!-- ── Section 5 ── -->
+              <div class="legal-subsection" id="s5">
+                <h2>5. Storing of Data</h2>
+                <div class="clause"><span class="num">5.1.</span><span>The Company will store and retain your personal information for as long as is contractually required to fulfil the obligations of our products and service to said client; and to comply with legal obligations; resolution of disputes or enforcement of contractual agreements.</span></div>
+                <div class="clause"><span class="num">5.2.</span><span>Clients may request us to no longer use their information on request in writing.</span></div>
+                <div class="clause"><span class="num">5.3.</span><span>We will take every measure to ensure that stored data is updated and relevant.</span></div>
+              </div>
+
+              <!-- ── Section 6 ── -->
+              <div class="legal-subsection" id="s6">
+                <h2>6. Security of Data</h2>
+                <div class="clause"><span class="num">6.1.</span><span>Security of data is supremely important to us. We have reasonable security measures in place to ensure the security of data.</span></div>
+                <div class="clause"><span class="num">6.2.</span><span>All Company's users, employees and business partners are obligated to abide by Security policy requirements outlined in the organisation's IT &amp; Communication Policy; Non-disclosure Agreements; Code of Business Conduct Policy; Confidentiality &amp; Conflict of Interest Policy. Non-compliance could result in dismissal and or criminal liability, as laid out in the Company's Dispute Resolution Policy; and Disciplinary Handling Policy.</span></div>
+                <div class="clause"><span class="num">6.3.</span><span>Clients are urged to send personal data through authorised channels only.</span></div>
+              </div>
+
+              <!-- ── Section 7 ── -->
+              <div class="legal-subsection" id="s7">
+                <h2>7. Use of Cookies</h2>
+                <p>Cookies are used to:</p>
+                <div class="clause"><span class="num">7.1.</span><span>Improve our products and service offerings.</span></div>
+                <div class="clause"><span class="num">7.2.</span><span>Provide us with usage and performance data.</span></div>
+                <div class="clause"><span class="num">7.3.</span><span>Provide users with an improved website experience.</span></div>
+                <div class="clause"><span class="num">7.4.</span><span>Combat fraud.</span></div>
+                <div class="clause"><span class="num">7.5.</span><span>Provide clients with interest-based opportunities.</span></div>
+                <div class="clause"><span class="num">7.6.</span><span>Distinguish you from other users of the Website.</span></div>
+              </div>
+
+              <!-- ── Section 8 ── -->
+              <div class="legal-subsection" id="s8">
+                <h2>8. Regulation of Interception of Communications Act 70 of 2002 ("RIC Act")</h2>
+                <div class="clause"><span class="num">7.7.</span><span>Subject to the provisions of the RIC Act and to the extent necessary, you consent and agree to us intercepting, blocking, filtering, reading, deleting, disclosing and/or using all communications sent or posted by you to the Website.</span></div>
+              </div>
+
+              <!-- ── Section 9 ── -->
+              <div class="legal-subsection" id="s9">
+                <h2>9. Monitoring &amp; Recording of Communications and Interactions</h2>
+                <div class="clause"><span class="num">9.1.</span><span>All digital communications and meetings may be recorded to ensure quality and as portfolio of evidence aligned to contractual obligations between the Company and clients.</span></div>
+                <div class="clause"><span class="num">9.2.</span><span>All company meetings will be held using the Microsoft Teams application. Security and Policies thereof are detailed and available on these links: <a href="https://docs.microsoft.com/en-us/microsoftteams/teams-privacy" target="_blank" rel="noopener noreferrer">teams-privacy</a>; <a href="https://docs.microsoft.com/en-us/microsoftteams/security-compliance-overview" target="_blank" rel="noopener noreferrer">security-compliance-overview</a>; <a href="https://docs.microsoft.com/en-us/microsoftteams/teams-security-guide" target="_blank" rel="noopener noreferrer">teams-security-guide</a>.</span></div>
+              </div>
+
+              <!-- ── Section 10 ── -->
+              <div class="legal-subsection" id="s10">
+                <h2>10. Revision</h2>
+                <div class="clause"><span class="num">10.1.</span><span>We reserve the right to amend this Privacy Policy from time to time, to ensure that we are in adherence to governance and legal requirements, in which case the amended Privacy Policy will supersede and replace any previous policies with effect from the date on which it is posted on the Website.</span></div>
+              </div>
+
+            </div><!-- /.legal-doc -->
+            <div class="pdf-download-wrap">
+              <button class="pdf-download-btn" type="button" data-content-id="privacy-content" data-file-name="RSS-Inc-Privacy-Policy.pdf">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                Download as PDF
+              </button>
+            </div>
+          </div><!-- /.legal-layout -->
+        </div><!-- /.container-wide -->
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container-wide footer-grid">
+        <div>
+          <h3>Contact</h3>
+          <div class="footer-contact">
+            <a href="mailto:connect@rsslaw.co.za">connect@rsslaw.co.za</a>
+            <a href="tel:+27115681158">+27 11 568 1158</a>
+            <p>Unit 1, Block A, Upper Grayston Office Park, Sandton, South Africa</p>
+          </div>
+        </div>
+
+        <div>
+          <h3>Information</h3>
+          <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="about.html">About Us</a>
+            <a href="services.html">Our Services</a>
+            <a href="contact.html">Contact</a>
+          </div>
+        </div>
+
+        <div>
+          <h3>Policies</h3>
+          <div class="footer-links">
+            <a href="terms-and-conditions.html">Terms &amp; Conditions</a>
+            <a href="privacy-policy.html">Privacy Policy</a>
+          </div>
+        </div>
+
+        <div class="footer-brand">
+          <a class="brand" href="index.html" aria-label="RSS Inc. Home">
+            <span class="brand-mark" aria-hidden="true">
+              <img src="images/logo.png" alt="">
+            </span>
+            <span class="brand-copy">
+              <strong>RSS Inc.</strong>
+              <small>Legal | Regulatory | Compliance</small>
+            </span>
+          </a>
+          <span class="detail-label">Professional Information</span>
+          <div class="detail-stack">
+            <p>Registration Number: 2024/622929/21</p>
+            <p>Legal Practice Number: F72676</p>
+          </div>
+        </div>
+      </div>
+      <div class="container-wide footer-bottom">
+        <p>&copy; 2024 RSS Inc. All Rights Reserved.</p>
+      </div>
+    </footer>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="script.js"></script>
+  <script>
+    const downloadButtonMarkup = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> Download as PDF';
+
+    async function prepareExportContext() {
+      if (document.fonts && document.fonts.ready) {
+        try {
+          await document.fonts.ready;
+        } catch (error) {
+          console.error('Fonts failed to load before PDF export.', error);
+        }
+      }
+
+      const images = Array.from(document.images).filter(img => !img.complete);
+      if (images.length) {
+        await Promise.all(images.map(img => new Promise(resolve => {
+          img.addEventListener('load', resolve, { once: true });
+          img.addEventListener('error', resolve, { once: true });
+        })));
+      }
+    }
+
+    function collectExportBlocks(container) {
+      const blocks = [];
+      const headings = container.querySelectorAll('h2, h3, .clause, .clause-sub, .clause-deep, p');
+
+      headings.forEach(node => {
+        if (node.closest('.pdf-download-wrap')) {
+          return;
+        }
+
+        if (node.matches('h2')) {
+          blocks.push({ type: 'h2', text: node.textContent.trim() });
+          return;
+        }
+
+        if (node.matches('h3')) {
+          blocks.push({ type: 'h3', text: node.textContent.trim() });
+          return;
+        }
+
+        if (node.matches('p')) {
+          const text = node.textContent.trim();
+          if (text) {
+            blocks.push({ type: node.classList.contains('legal-effective') ? 'meta' : 'p', text });
+          }
+          return;
+        }
+
+        const num = node.querySelector('.num')?.textContent.trim() || '';
+        const valueParts = Array.from(node.children)
+          .filter(child => !child.classList.contains('num'))
+          .map(child => child.textContent.trim())
+          .filter(Boolean);
+        const value = valueParts.join(' ');
+        const text = [num, value].filter(Boolean).join(' ');
+        if (text) {
+          blocks.push({
+            type: node.classList.contains('clause-deep') ? 'clause-deep' : node.classList.contains('clause-sub') ? 'clause-sub' : 'clause',
+            text
+          });
+        }
+      });
+
+      return blocks;
+    }
+
+    function renderBlocksToPdf(pdf, blocks, title, subtitle) {
+      const pageWidth = pdf.internal.pageSize.getWidth();
+      const pageHeight = pdf.internal.pageSize.getHeight();
+      const marginX = 16;
+      const marginTop = 18;
+      const maxWidth = pageWidth - (marginX * 2);
+      let cursorY = marginTop;
+
+      const ensureSpace = needed => {
+        if (cursorY + needed <= pageHeight - 16) {
+          return;
+        }
+        pdf.addPage();
+        cursorY = marginTop;
+      };
+
+      pdf.setTextColor(13, 27, 46);
+      pdf.setFont('times', 'bold');
+      pdf.setFontSize(20);
+      const titleLines = pdf.splitTextToSize(title, maxWidth);
+      ensureSpace(titleLines.length * 8);
+      pdf.text(titleLines, marginX, cursorY);
+      cursorY += titleLines.length * 8;
+
+      pdf.setFont('helvetica', 'normal');
+      pdf.setFontSize(9);
+      pdf.setTextColor(130, 130, 130);
+      pdf.text(subtitle, marginX, cursorY);
+      cursorY += 10;
+
+      blocks.forEach(block => {
+        const style = {
+          h2: { font: 'times', weight: 'bold', size: 16, gapBefore: 6, gapAfter: 5, color: [13, 27, 46], indent: 0 },
+          h3: { font: 'helvetica', weight: 'bold', size: 10, gapBefore: 4, gapAfter: 4, color: [13, 27, 46], indent: 0 },
+          meta: { font: 'helvetica', weight: 'italic', size: 9, gapBefore: 0, gapAfter: 4, color: [130, 130, 130], indent: 0 },
+          p: { font: 'helvetica', weight: 'normal', size: 10, gapBefore: 0, gapAfter: 4, color: [26, 26, 46], indent: 0 },
+          clause: { font: 'helvetica', weight: 'normal', size: 10, gapBefore: 0, gapAfter: 3.5, color: [26, 26, 46], indent: 0 },
+          'clause-sub': { font: 'helvetica', weight: 'normal', size: 10, gapBefore: 0, gapAfter: 3.5, color: [26, 26, 46], indent: 8 },
+          'clause-deep': { font: 'helvetica', weight: 'normal', size: 10, gapBefore: 0, gapAfter: 3.5, color: [26, 26, 46], indent: 16 }
+        }[block.type];
+
+        cursorY += style.gapBefore;
+        pdf.setFont(style.font, style.weight);
+        pdf.setFontSize(style.size);
+        pdf.setTextColor(style.color[0], style.color[1], style.color[2]);
+
+        const lines = pdf.splitTextToSize(block.text, maxWidth - style.indent);
+        const lineHeight = style.size <= 9 ? 4.2 : 5;
+        ensureSpace(lines.length * lineHeight + style.gapAfter + 2);
+        pdf.text(lines, marginX + style.indent, cursorY);
+        cursorY += (lines.length * lineHeight) + style.gapAfter;
+      });
+    }
+
+    async function downloadPDF(button) {
+      const contentId = button.dataset.contentId;
+      const fileName = button.dataset.fileName;
+      const container = document.getElementById(contentId);
+
+      if (!container) {
+        console.error('PDF content container not found:', contentId);
+        return;
+      }
+
+      if (!window.jspdf || !window.jspdf.jsPDF) {
+        console.error('jsPDF failed to load.');
+        return;
+      }
+
+      button.disabled = true;
+      button.textContent = 'Generating…';
+
+      try {
+        await prepareExportContext();
+
+        const title = document.querySelector('.legal-hero h1')?.textContent.replace(/\s+/g, ' ').trim() || document.title;
+        const subtitle = document.querySelector('.legal-hero p')?.textContent.trim() || '';
+        const blocks = collectExportBlocks(container);
+        const pdf = new window.jspdf.jsPDF({ unit: 'mm', format: 'a4', orientation: 'portrait' });
+
+        renderBlocksToPdf(pdf, blocks, title, subtitle);
+        pdf.save(fileName);
+      } catch (error) {
+        console.error('Failed to generate PDF.', error);
+      } finally {
+        button.disabled = false;
+        button.innerHTML = downloadButtonMarkup;
+      }
+    }
+
+    /* ── TOC: smooth scroll + active highlight ── */
+    (function () {
+      const tocLinks = document.querySelectorAll('.legal-toc a[href^="#"]');
+      const sections = Array.from(tocLinks).map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+
+      function setActive() {
+        let current = null;
+        const offset = window.innerHeight / 2;
+        sections.forEach(sec => {
+          if (sec.getBoundingClientRect().top <= offset) current = sec;
+        });
+        tocLinks.forEach(a => {
+          a.classList.toggle('active', current && a.getAttribute('href') === '#' + current.id);
+        });
+      }
+
+      window.addEventListener('scroll', setActive, { passive: true });
+      setActive();
+
+      /* smooth scroll — top of section with header offset */
+      tocLinks.forEach(a => {
+        a.addEventListener('click', function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute('href'));
+          if (!target) return;
+          const headerHeight = document.querySelector('.site-header')?.offsetHeight || 80;
+          const top = target.getBoundingClientRect().top + window.scrollY - headerHeight - 24;
+          window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' });
+        });
+      });
+
+      const downloadButton = document.querySelector('.pdf-download-btn');
+      if (downloadButton) {
+        downloadButton.addEventListener('click', function () {
+          downloadPDF(downloadButton);
+        });
+      }
+
+      /* mobile toggle */
+      const btn = document.querySelector('.legal-toc-toggle');
+      const toc = document.getElementById('legal-toc-nav');
+      if (btn && toc) {
+        btn.addEventListener('click', function () {
+          const open = toc.classList.toggle('open');
+          btn.setAttribute('aria-expanded', open);
+          btn.querySelector('svg').style.transform = open ? 'rotate(180deg)' : '';
+        });
+      }
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Terms &amp; Conditions | RSS Inc.</title>
+  <meta name="description" content="Terms and Conditions of Website and Acceptable Usage Policy for RSS Inc.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* ── Hero ── */
+    .legal-hero {
+      background: var(--clr-navy, #0d1b2e);
+      padding: 5rem 0 3.5rem;
+    }
+    .legal-hero h1 {
+      color: #fff;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      margin: 0 0 0.5rem;
+    }
+    .legal-hero p {
+      color: rgba(255,255,255,0.55);
+      font-size: 0.9rem;
+      margin: 0;
+    }
+
+    /* ── Page layout ── */
+    .legal-body {
+      padding: 3.5rem 0 7rem;
+      background: #fff;
+    }
+    .legal-layout {
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: 3.5rem;
+      align-items: start;
+    }
+
+    /* ── Sticky sidebar TOC ── */
+    .legal-toc-wrap {
+      position: sticky;
+      top: 5.5rem;
+      max-height: calc(100vh - 7rem);
+      overflow-y: auto;
+      scrollbar-width: thin;
+    }
+    .legal-toc-wrap::-webkit-scrollbar { width: 4px; }
+    .legal-toc-wrap::-webkit-scrollbar-thumb { background: #d0ccc3; border-radius: 2px; }
+
+    .legal-toc {
+      background: #f7f5f0;
+      border-radius: 6px;
+      padding: 1.5rem 1.25rem;
+    }
+    .legal-toc-title {
+      font-family: 'Manrope', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #888;
+      margin: 0 0 1rem;
+    }
+    .legal-toc nav {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .toc-section-label {
+      font-family: 'Manrope', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: #0d1b2e;
+      padding: 0.55rem 0.75rem 0.3rem;
+      margin-top: 0.5rem;
+      display: block;
+      text-decoration: none;
+      border-radius: 4px;
+      transition: background 0.15s, color 0.15s;
+    }
+    .toc-section-label:first-child { margin-top: 0; }
+    a.toc-section-label:hover {
+      background: #ede9e0;
+      color: #0d1b2e;
+    }
+    a.toc-section-label.active {
+      background: #0d1b2e;
+      color: #fff;
+    }
+    .legal-toc a {
+      font-family: 'Manrope', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: #555;
+      text-decoration: none;
+      padding: 0.35rem 0.75rem 0.35rem 1.25rem;
+      border-radius: 4px;
+      display: block;
+      transition: background 0.15s, color 0.15s;
+      line-height: 1.35;
+    }
+    .legal-toc a:hover {
+      background: #ede9e0;
+      color: #0d1b2e;
+    }
+    .legal-toc a.active {
+      background: #0d1b2e;
+      color: #fff;
+      font-weight: 600;
+    }
+
+    /* ── Document content ── */
+    .legal-doc {
+      font-family: 'Manrope', sans-serif;
+      color: #1a1a2e;
+      line-height: 1.85;
+      font-size: 0.97rem;
+    }
+    .legal-effective {
+      font-size: 0.82rem;
+      color: #999;
+      margin-bottom: 3rem;
+      font-style: italic;
+    }
+    .legal-section {
+      padding-top: 1rem;
+      margin-bottom: 3.5rem;
+      scroll-margin-top: 6rem;
+    }
+    .legal-section:last-child { margin-bottom: 0; }
+    .legal-doc h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.75rem;
+      font-weight: 700;
+      margin: 0 0 2rem;
+      color: #0d1b2e;
+      border-bottom: 2px solid #e8e4d9;
+      padding-bottom: 0.65rem;
+    }
+    .legal-subsection {
+      margin-bottom: 3rem;
+      padding-bottom: 3rem;
+      border-bottom: 1px solid #e8e4d9;
+      scroll-margin-top: 6rem;
+    }
+    .legal-subsection:last-child {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+    .legal-doc h3 {
+      font-family: 'Manrope', sans-serif;
+      font-size: 0.92rem;
+      font-weight: 700;
+      margin: 0 0 1rem;
+      color: #0d1b2e;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .legal-doc p {
+      margin: 0.5rem 0;
+    }
+    .legal-doc .clause {
+      display: flex;
+      gap: 1rem;
+      margin: 0.75rem 0;
+    }
+    .legal-doc .clause .num {
+      min-width: 3.5rem;
+      font-weight: 600;
+      color: #666;
+      flex-shrink: 0;
+      padding-top: 0.05em;
+    }
+    .legal-doc .clause-sub {
+      display: flex;
+      gap: 1rem;
+      margin: 0.6rem 0 0.6rem 3.5rem;
+    }
+    .legal-doc .clause-sub .num {
+      min-width: 4.5rem;
+      font-weight: 600;
+      color: #888;
+      flex-shrink: 0;
+      padding-top: 0.05em;
+    }
+    .legal-doc .clause-deep {
+      display: flex;
+      gap: 1rem;
+      margin: 0.5rem 0 0.5rem 8rem;
+    }
+    .legal-doc .clause-deep .num {
+      min-width: 5rem;
+      font-weight: 600;
+      color: #999;
+      flex-shrink: 0;
+      padding-top: 0.05em;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 900px) {
+      .legal-layout {
+        grid-template-columns: 1fr;
+      }
+      .legal-toc-wrap {
+        position: static;
+        max-height: none;
+        overflow: visible;
+      }
+      .legal-toc {
+        display: none; /* collapsed on small screens via toggle below */
+      }
+      .legal-toc.open {
+        display: block;
+      }
+      .legal-toc-toggle {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        background: #0d1b2e;
+        color: #fff;
+        border: none;
+        border-radius: 6px;
+        padding: 0.65rem 1rem;
+        font-family: 'Manrope', sans-serif;
+        font-size: 0.82rem;
+        font-weight: 700;
+        cursor: pointer;
+        margin-bottom: 0.75rem;
+        width: 100%;
+        justify-content: space-between;
+      }
+    }
+    @media (min-width: 901px) {
+      .legal-toc-toggle { display: none; }
+    }
+    @media (max-width: 600px) {
+      .legal-doc .clause-sub { margin-left: 1.5rem; }
+      .legal-doc .clause-deep { margin-left: 3rem; }
+    }
+
+    @media (max-width: 900px) {
+      .pdf-download-wrap {
+        grid-column: auto;
+      }
+    }
+
+    /* ── Download PDF button ── */
+    .pdf-download-wrap {
+      margin-top: 3rem;
+      padding-top: 2.5rem;
+      grid-column: 2;
+      text-align: center;
+    }
+    .pdf-download-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      padding: 0.8rem 1.75rem;
+      background: #0d1b2e;
+      color: #fff;
+      font-family: 'Manrope', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .pdf-download-btn:hover { background: #1c3254; }
+    .pdf-download-btn svg { flex-shrink: 0; }
+    @media print {
+      .site-header, .legal-hero, .legal-toc-wrap, .pdf-download-wrap, .site-footer { display: none !important; }
+      .legal-body { padding: 0; }
+      .legal-layout { display: block; }
+      .legal-doc { font-size: 10pt; line-height: 1.6; color: #000; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-shell">
+    <header class="site-header" id="top">
+      <div class="container-wide nav-wrap">
+        <a class="brand" href="index.html" aria-label="RSS Inc. Home">
+          <span class="brand-mark" aria-hidden="true">
+            <img src="images/logo.png" alt="">
+          </span>
+          <span class="brand-copy">
+            <strong>RSS Inc.</strong>
+            <small>Legal | Regulatory | Compliance</small>
+          </span>
+        </a>
+
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Toggle navigation">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <nav class="site-nav" id="site-nav" aria-label="Primary navigation">
+          <a href="index.html">Home</a>
+          <a href="about.html">About Us</a>
+          <a href="services.html">Our Services</a>
+          <a href="blogs-and-socials.html">Blogs &amp; Socials</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="legal-hero">
+        <div class="container-wide">
+          <h1>Terms &amp; Conditions of Website<br>and Acceptable Usage Policy</h1>
+          <p>RSS Law | Reg No 24/219732/07</p>
+        </div>
+      </section>
+
+      <section class="legal-body">
+        <div class="container-wide">
+          <div class="legal-layout">
+
+            <!-- ── Sticky sidebar TOC ── -->
+            <div class="legal-toc-wrap">
+              <button class="legal-toc-toggle" aria-expanded="false" aria-controls="legal-toc-nav">
+                Quick Reference
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 5l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+              <div class="legal-toc" id="legal-toc-nav">
+                <p class="legal-toc-title">Quick Reference</p>
+                <nav aria-label="Document sections">
+                  <a href="#s1" class="toc-section-label">1. Terms &amp; Conditions</a>
+                  <a href="#s1-1">1.1 Introduction</a>
+                  <a href="#s1-2">1.2 Information About Us</a>
+                  <a href="#s1-3">1.3 Changes to T&amp;Cs</a>
+                  <a href="#s1-4">1.4 Changes to the Website</a>
+                  <a href="#s1-5">1.5 Accessing the Website</a>
+                  <a href="#s1-6">1.6 Your Account &amp; Password</a>
+                  <a href="#s1-7">1.7 Intellectual Property</a>
+                  <a href="#s1-8">1.8 No Reliance on Information</a>
+                  <a href="#s1-9">1.9 Limitation of Liability</a>
+                  <a href="#s1-10">1.10 Uploading Content</a>
+                  <a href="#s1-11">1.11 Viruses</a>
+                  <a href="#s1-12">1.12 Linking to the Website</a>
+                  <a href="#s1-13">1.13 Governing Law</a>
+                  <a href="#s2" class="toc-section-label">2. Acceptable Use Policy</a>
+                  <a href="#s2-1">2.1 Introduction</a>
+                  <a href="#s2-2">2.2 Prohibited Uses</a>
+                  <a href="#s2-3">2.3 Content Standards</a>
+                  <a href="#s2-4">2.4 Suspension &amp; Termination</a>
+                </nav>
+              </div>
+            </div>
+
+            <!-- ── Document body ── -->
+            <div class="legal-doc" id="terms-content">
+              <p class="legal-effective">Last updated: 2025</p>
+
+              <!-- ─────────── SECTION 1 ─────────── -->
+              <div class="legal-section" id="s1">
+                <h2>1. Terms and Conditions for Website</h2>
+
+                <div class="legal-subsection" id="s1-1">
+                  <h3>1.1. Introduction</h3>
+                  <div class="clause"><span class="num">1.1.1.</span><span>Access to and use of the website, www.rsslaw.co.za (the "<strong>Website</strong>") are subject to the following terms and conditions, including our Data Privacy Policy and our Acceptable Use Policy (the "<strong>Terms and Conditions</strong>").</span></div>
+                  <div class="clause"><span class="num">1.1.2.</span><span>The Terms and Conditions set out the terms on which you may make use of the Website, whether as a guest or a registered user. Use of the Website includes accessing, browsing, or registering as a user. Please read the Terms and Conditions carefully before you start to use the Website.</span></div>
+                  <div class="clause"><span class="num">1.1.3.</span><span>Should you disagree with the Terms and Conditions, you are to cease use of the Website without delay, as further use will automatically bind you to the Terms and Conditions.</span></div>
+                  <div class="clause"><span class="num">1.1.4.</span><span>By using the Website, you acknowledge and accept the Terms and Conditions and declare that your use of and/or reliance on the Website including any content, materials, data or information posted, submitted, downloaded or otherwise obtained through the Website, is at your own risk.</span></div>
+                  <div class="clause"><span class="num">1.1.5.</span><span>The Terms and Conditions also include our Privacy Policy, which sets out the terms on which we process any personal data we collect from you, or that you provide to us. By using the Website, you consent to such processing and you warrant that all data provided by you is accurate.</span></div>
+                  <div class="clause"><span class="num">1.1.6.</span><span>Nothing in the Website, nor does the transmission, downloading or sending of any information create a contractual relationship, of any kind.</span></div>
+                  <div class="clause"><span class="num">1.1.7.</span><span>The Terms and Conditions contain the entire terms governing the relationship between us.</span></div>
+                  <div class="clause"><span class="num">1.1.8.</span><span>Failure to exercise, or any delay in exercising, any right or remedy provided under the Terms and Conditions or by law shall not constitute a waiver of that (or any other) right or remedy, nor shall it preclude or restrict any further exercise of that (or any other) right or remedy.</span></div>
+                </div>
+
+                <div class="legal-subsection" id="s1-2">
+                  <h3>1.2. Information About Us</h3>
+                  <div class="clause"><span class="num">1.2.1.</span><span>The Website is operated by RSS Law registered in South Africa with registration number 2024/219732/07.</span></div>
+                </div>
+
+                <div class="legal-subsection" id="s1-3">
+                  <h3>1.3. Changes to the Terms and Conditions</h3>
+                  <div class="clause"><span class="num">1.3.1.</span><span>We may revise the Terms and Conditions from time to time by amending this page, without prior notice or announcement. Please check this page from time to time to take notice of any changes made, as they are binding on you.</span></div>
+                </div>
+
+                <div class="legal-subsection" id="s1-4">
+                  <h3>1.4. Changes to the Website</h3>
+                  <div class="clause"><span class="num">1.4.1.</span><span>We reserve the right to modify the Website and/or discontinue its operation, including:</span></div>
+                  <div class="clause"><span class="num">1.4.2.</span><span>changing the availability of, restricting access to, or imposing limits on any or all features or services on, or links to, the Website;</span></div>
+                  <div class="clause"><span class="num">1.4.3.</span><span>adding, removing or changing any fees or charges for use of the Website or any features of the Website;</span></div>
+                  <div class="clause"><span class="num">1.4.4.</span><span>removing, adding, modifying or otherwise changing any content or information on the Website, at any time without prior notice or announcement, either wholly or in part, in its sole and absolute discretion and without accepting any liability therefor.</span></div>
+                  <div class="clause"><span class="num">1.4.5.</span><span>We shall be under no obligation to update the content of the Website but reserve the right, in our sole and absolute discretion, to correct any errors or omissions in any portion of the Website at any time without prior notice or announcement.</span></div>
+                </div>
+
+                <div class="legal-subsection" id="s1-5">
+                  <h3>1.5. Accessing the Website</h3>
+                  <div class="clause"><span class="num">1.5.1.</span><span>The Website is made available free of charge.</span></div>
+                  <div class="clause"><span class="num">1.5.2.</span><span>We do not guarantee that the Website, or any content on it, will always be available or be uninterrupted. Access to the Website is permitted on a temporary basis. We may suspend, withdraw, discontinue or change all or any part of the Website without notice. We shall not be liable to you if for any reason the Website is unavailable at any time or for any period.</span></div>
+                  <div class="clause"><span class="num">1.5.3.</span><span>We only provide the Website for domestic and private use only. You agree not to use the Website for any commercial or business purposes, and we shall have no liability to you for any loss of profit, loss of business, business interruption, or loss of business opportunity.</span></div>
+                </div>
+
+                <div class="legal-subsection" id="s1-6">
+                  <h3>1.6. Your Account and Password</h3>
+                  <div class="clause"><span class="num">1.6.1.</span><span>If you choose, or you are provided with, a user identification code, password or any other piece of information as part of our security procedures, you must treat such information as confidential. You must not disclose such information to any third party.</span></div>
+                  <div class="clause"><span class="num">1.6.2.</span><span>We have the right to disable any user identification code or password, whether chosen by you or allocated by us, at any time, if in our reasonable opinion you have failed to comply with any of the provisions of the Terms and Conditions.</span></div>
+                  <div class="clause"><span class="num">1.6.3.</span><span>If you know or suspect that anyone other than you know your user identification code or password, you must promptly notify us at <a href="mailto:connect@rsslaw.co.za">connect@rsslaw.co.za</a>.</span></div>
+                </div>
+
+                <div class="legal-subsection" id="s1-7">
+                  <h3>1.7. Intellectual Property Rights</h3>
+                  <div class="clause"><span class="num">1.7.1.</span><span>The trademarks and other intellectual property featured on the Website are protected by <em>inter alia</em> all relevant international and local copyright and trademark laws (including, but not limited to, those of the Republic of South Africa).</span></div>
+                  <div class="clause"><span class="num">1.7.2.</span><span>No one may use these trademarks or other intellectual property without prior written consent of the owner of such trademarks or other intellectual property rights. Please contact us at <a href="mailto:connect@rsslaw.co.za">connect@rsslaw.co.za</a> should you require details of such owners.</span></div>
+                  <div class="clause"><span class="num">1.7.3.</span><span>You must not use any part of the content on the Website for commercial purposes without obtaining a licence to do so from us or our licensors.</span></div>
+                  <div class="clause"><span class="num">1.7.4.</span><span>If you breach any provision of this paragraph 1.7 of the Terms and Conditions, your right to use the Website will cease immediately and you must, at our option, return or destroy any copies of the Website or part thereof (electronic or printed).</span></div>
+                </div>
+
+                <div class="legal-subsection" id="s1-8">
+                  <h3>1.8. No Reliance on Information</h3>
+                  <div class="clause"><span class="num">1.8.1.</span><span>The content on the Website is provided for general information only. It is not intended to amount to advice on which you should rely. You must obtain professional or specialist advice before taking, or refraining from, any action on the basis of the content on the Website.</span></div>
+                  <div class="clause"><span class="num">1.8.2.</span><span>We give no warranty, either expressly or tacitly, for the completeness, accuracy or correctness of the details provided on the Website. Please be aware, in particular, that the details we provide may no longer be up-to-date and, accordingly, we make no representation as to the accuracy or correctness of such details.</span></div>
+                </div>
+
+                <div class="legal-subsection" id="s1-9">
+                  <h3>1.9. Limitation of our Liability</h3>
+                  <div class="clause"><span class="num">1.9.1.</span><span>Access to and use of the Website and of any associated sites or sites connected via links take place at the user's own risk. We, and our affiliates, agents, service providers, employees, officers, directors and representatives ("<strong>Our Representatives</strong>") accept no liability whatsoever for any loss, damage or compensation claims due to, <em>inter alia</em>:</span></div>
+                  <div class="clause-sub"><span class="num">1.9.1.1.</span><span>missing or incorrect details of any kind;</span></div>
+                  <div class="clause-sub"><span class="num">1.9.1.2.</span><span>use of, or inability to use, the Website;</span></div>
+                  <div class="clause-sub"><span class="num">1.9.1.3.</span><span>use of or reliance on any content displayed on the Website; and/or</span></div>
+                  <div class="clause-sub"><span class="num">1.9.1.4.</span><span>use of the services or goods of any advertiser on the Website.</span></div>
+                  <div class="clause"><span class="num">1.9.2.</span><span>You hereby indemnify, hold harmless and agree to defend us and Our Representatives from and against any and all claims and/or liabilities, direct damages, penalties, judgments, assessments, losses, costs and expenses (including legal costs) of whatever nature which any one or more of them may suffer or incur as a result of, arising out of or relating to your access to (or lack thereof) and/or use of the Website, content and/or information.</span></div>
+                  <div class="clause"><span class="num">1.9.3.</span><span>Nothing in the Terms and Conditions excludes or limits our liability for death or personal injury arising from our negligence, or our fraud or fraudulent misrepresentation, or any other liability that cannot be excluded or limited by law.</span></div>
+                  <div class="clause"><span class="num">1.9.4.</span><span>We shall not be liable for any loss or damage caused by a virus, distributed denial-of-service attack, or other technologically harmful material that may infect your computer equipment, computer programs, data or other proprietary material due to your use of the Website or to your downloading of any content on it, or on any website linked to it.</span></div>
+                  <div class="clause"><span class="num">1.9.5.</span><span>We assume no responsibility for the content of websites linked on the Website. Such links should not be interpreted as endorsement by us of those linked websites. We will not be liable for any loss or damage that may arise from your use of them.</span></div>
+                </div>
+
+                <div class="legal-subsection" id="s1-10">
+                  <h3>1.10. Uploading Content to the Website</h3>
+                  <div class="clause"><span class="num">1.10.1.</span><span>Whenever you make use of a feature that allows you to upload content to the Website, or to make contact with other users of the Website, you must comply with the content standards set out in our Acceptable Use Policy.</span></div>
+                  <div class="clause"><span class="num">1.10.2.</span><span>You warrant that any such contribution does comply with those standards, and you will be liable to us and indemnify us for any breach of that warranty.</span></div>
+                  <div class="clause"><span class="num">1.10.3.</span><span>Any content you upload to the Website will be considered non-confidential and non-proprietary, and we have the right to use, copy, distribute and disclose to third parties any such content for any purpose.</span></div>
+                  <div class="clause"><span class="num">1.10.4.</span><span>We also have the right to disclose your identity to any third party who claims that any content posted or uploaded by you to the Website constitutes a violation of their intellectual property rights, or of their right to privacy.</span></div>
+                  <div class="clause"><span class="num">1.10.5.</span><span>We will not be responsible, or liable to you or any third party, for the content or accuracy of any content posted by you or any other user of the Website.</span></div>
+                  <div class="clause"><span class="num">1.10.6.</span><span>We have the right to remove any posting you make on the Website if, in our opinion, your post does not comply with the content standards set out in our Acceptable Use Policy.</span></div>
+                  <div class="clause"><span class="num">1.10.7.</span><span>The views expressed by other users on the Website do not represent our views or values.</span></div>
+                </div>
+
+                <div class="legal-subsection" id="s1-11">
+                  <h3>1.11. Viruses</h3>
+                  <div class="clause"><span class="num">1.11.1.</span><span>We do not guarantee that the Website will be secure or free from bugs or viruses.</span></div>
+                  <div class="clause"><span class="num">1.11.2.</span><span>You must not misuse the Website by knowingly introducing viruses, Trojans, worms, logic bombs or other material which is malicious or technologically harmful. You must not attempt to gain unauthorised access to the Website, the server on which the Website is stored or any server, computer or database connected to the Website.</span></div>
+                </div>
+
+                <div class="legal-subsection" id="s1-12">
+                  <h3>1.12. Linking to the Website</h3>
+                  <div class="clause"><span class="num">1.12.1.</span><span>You must not link our home page, without our prior consent.</span></div>
+                  <div class="clause"><span class="num">1.12.2.</span><span>You must not establish a link to the Website in any website that is not owned by you.</span></div>
+                  <div class="clause"><span class="num">1.12.3.</span><span>The Website must not be framed on any other site, nor may you create a link to any part of the Website.</span></div>
+                  <div class="clause"><span class="num">1.12.4.</span><span>If you wish to link to the Website or make any use of content on the Website, please contact <a href="mailto:connect@rsslaw.co.za">connect@rsslaw.co.za</a>.</span></div>
+                </div>
+
+                <div class="legal-subsection" id="s1-13">
+                  <h3>1.13. Governing Law</h3>
+                  <div class="clause"><span class="num">1.13.1.</span><span>The laws of the Republic of South Africa shall govern the Website, your use of the Website and the Terms and Conditions.</span></div>
+                  <div class="clause"><span class="num">1.13.2.</span><span>You consent and agree to the jurisdiction of the courts of Republic of South Africa to decide any dispute involving the Terms and Conditions.</span></div>
+                  <div class="clause"><span class="num">1.13.3.</span><span>If you have any queries regarding the above terms and conditions, please contact us by email at <a href="mailto:connect@rsslaw.co.za">connect@rsslaw.co.za</a>.</span></div>
+                </div>
+              </div>
+
+              <!-- ─────────── SECTION 2 ─────────── -->
+              <div class="legal-section" id="s2">
+                <h2>2. Acceptable Use Policy</h2>
+
+                <div class="legal-subsection" id="s2-1">
+                  <h3>2.1. Introduction</h3>
+                  <div class="clause"><span class="num">2.1.1.</span><span>This acceptable use policy (AUP) sets out the terms between you and us under which you may access the Website. This AUP applies to all users of, and visitors to, the Website.</span></div>
+                  <div class="clause"><span class="num">2.1.2.</span><span>Your use of the Website means that you accept, and agree to abide by, all the policies in this AUP, which supplement (and in no way limits) the Terms and Conditions.</span></div>
+                </div>
+
+                <div class="legal-subsection" id="s2-2">
+                  <h3>2.2. Prohibited Uses</h3>
+                  <div class="clause"><span class="num">2.2.1.</span><span>You may use the Website only for lawful purposes. You may not use the Website:</span></div>
+                  <div class="clause-sub"><span class="num">2.2.1.2.</span><span>in any way that breaches any applicable local, national or international law or regulation;</span></div>
+                  <div class="clause-sub"><span class="num">2.2.1.3.</span><span>in any way that is unlawful or fraudulent, or has any unlawful or fraudulent purpose or effect;</span></div>
+                  <div class="clause-sub"><span class="num">2.2.1.4.</span><span>for the purpose of harming or attempting to harm minors or any other person in any way;</span></div>
+                  <div class="clause-sub"><span class="num">2.2.1.5.</span><span>to send, knowingly receive, upload, download, use or re-use any material which does not comply with our content standards;</span></div>
+                  <div class="clause-sub"><span class="num">2.2.1.6.</span><span>to transmit, or procure the sending of, any unsolicited or unauthorised advertising or promotional material or any other form of similar solicitation (spam); and/or</span></div>
+                  <div class="clause-sub"><span class="num">2.2.1.7.</span><span>to knowingly transmit any data, send or upload any material that contains viruses, Trojan horses, worms, time-bombs, keystroke loggers, spyware, adware or any other harmful programs or similar computer code designed to adversely affect the operation of any computer software or hardware.</span></div>
+                  <div class="clause"><span class="num">2.2.2.</span><span>You also agree:</span></div>
+                  <div class="clause-sub"><span class="num">2.2.2.1.</span><span>not to reproduce, duplicate, copy or re-sell any part of the Website in contravention of the provisions of the Terms and Conditions; and</span></div>
+                  <div class="clause-sub"><span class="num">2.2.2.2.</span><span>not to access without authority, interfere with, damage or disrupt:</span></div>
+                  <div class="clause-deep"><span class="num">2.2.2.2.1.</span><span>any part of the Website;</span></div>
+                  <div class="clause-deep"><span class="num">2.2.2.2.2.</span><span>any equipment or network on which the Website is stored;</span></div>
+                  <div class="clause-deep"><span class="num">2.2.2.2.3.</span><span>any software used in the provision of the Website; and/or</span></div>
+                  <div class="clause-deep"><span class="num">2.2.2.2.4.</span><span>any equipment or network or software owned or used by any third party.</span></div>
+                </div>
+
+                <div class="legal-subsection" id="s2-3">
+                  <h3>2.3. Content Standards</h3>
+                  <div class="clause"><span class="num">2.3.1.</span><span>These content standards apply to any and all material which you contribute to the Website ("<strong>Contributions</strong>"), and to any interactive services associated with it.</span></div>
+                  <div class="clause"><span class="num">2.3.2.</span><span>Contributions must:</span></div>
+                  <div class="clause-sub"><span class="num">2.3.2.1.</span><span>be accurate (where they state facts);</span></div>
+                  <div class="clause-sub"><span class="num">2.3.2.2.</span><span>be genuinely held (where they state opinions); and</span></div>
+                  <div class="clause-sub"><span class="num">2.3.2.3.</span><span>comply with the applicable laws of the Republic of South Africa and of any other country which is relevant to your posting and the country you are based.</span></div>
+                  <div class="clause"><span class="num">2.3.3.</span><span>Contributions must not:</span></div>
+                  <div class="clause-sub"><span class="num">2.3.3.1.</span><span>contain any material which is defamatory of any person;</span></div>
+                  <div class="clause-sub"><span class="num">2.3.3.2.</span><span>contain any material which is obscene, offensive, hateful or inflammatory;</span></div>
+                  <div class="clause-sub"><span class="num">2.3.3.3.</span><span>promote sexually explicit material;</span></div>
+                  <div class="clause-sub"><span class="num">2.3.3.4.</span><span>promote violence and/or any discrimination of whatsoever nature;</span></div>
+                  <div class="clause-sub"><span class="num">2.3.3.5.</span><span>infringe any copyright, database right or trade mark of any other person;</span></div>
+                  <div class="clause-sub"><span class="num">2.3.3.6.</span><span>be likely to deceive any person;</span></div>
+                  <div class="clause-sub"><span class="num">2.3.3.7.</span><span>be made in breach of any legal duty owed to a third party, such as a contractual duty or a duty of confidence;</span></div>
+                  <div class="clause-sub"><span class="num">2.3.3.8.</span><span>promote any illegal activity;</span></div>
+                  <div class="clause-sub"><span class="num">2.3.3.9.</span><span>be threatening, abuse or invade another's privacy, or cause annoyance, inconvenience or needless anxiety;</span></div>
+                  <div class="clause-sub"><span class="num">2.3.3.10.</span><span>be likely to harass, upset, embarrass, alarm or annoy any other person;</span></div>
+                  <div class="clause-sub"><span class="num">2.3.3.11.</span><span>be used to impersonate any person, or to misrepresent your identity or affiliation with any person;</span></div>
+                  <div class="clause-sub"><span class="num">2.3.3.12.</span><span>give the impression that they emanate from us, if this is not the case; and/or</span></div>
+                  <div class="clause-sub"><span class="num">2.3.3.13.</span><span>advocate, promote or assist any unlawful act such as (by way of example only) copyright infringement or computer misuse.</span></div>
+                </div>
+
+                <div class="legal-subsection" id="s2-4">
+                  <h3>2.4. Suspension and Termination</h3>
+                  <div class="clause"><span class="num">2.4.1.</span><span>We will determine, in our discretion, whether there has been a breach of this AUP through your use of the Website. When a breach of this AUP has occurred, we may take such action as we deem appropriate.</span></div>
+                  <div class="clause"><span class="num">2.4.2.</span><span>Failure to comply with this AUP constitutes a material breach of Terms and Conditions, and may result in our taking all or any of the following actions:</span></div>
+                  <div class="clause-sub"><span class="num">2.4.2.1.</span><span>immediate, temporary or permanent withdrawal of your right to use the Website;</span></div>
+                  <div class="clause-sub"><span class="num">2.4.2.2.</span><span>immediate, temporary or permanent removal of any posting or material uploaded by you to the Website;</span></div>
+                  <div class="clause-sub"><span class="num">2.4.2.3.</span><span>issue of a warning to you;</span></div>
+                  <div class="clause-sub"><span class="num">2.4.2.4.</span><span>legal proceedings against you for reimbursement of all costs on an indemnity basis (including, but not limited to, reasonable administrative and legal costs) resulting from the breach;</span></div>
+                  <div class="clause-sub"><span class="num">2.4.2.5.</span><span>further legal action against you; and/or</span></div>
+                  <div class="clause-sub"><span class="num">2.4.2.6.</span><span>disclosure of such information to law enforcement authorities as we reasonably feel is necessary.</span></div>
+                </div>
+              </div>
+
+            </div><!-- /.legal-doc -->
+            <div class="pdf-download-wrap">
+              <button class="pdf-download-btn" type="button" data-content-id="terms-content" data-file-name="RSS-Inc-Terms-and-Conditions.pdf">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                Download as PDF
+              </button>
+            </div>
+          </div><!-- /.legal-layout -->
+        </div><!-- /.container-wide -->
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container-wide footer-grid">
+        <div>
+          <h3>Contact</h3>
+          <div class="footer-contact">
+            <a href="mailto:connect@rsslaw.co.za">connect@rsslaw.co.za</a>
+            <a href="tel:+27115681158">+27 11 568 1158</a>
+            <p>Unit 1, Block A, Upper Grayston Office Park, Sandton, South Africa</p>
+          </div>
+        </div>
+
+        <div>
+          <h3>Information</h3>
+          <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="about.html">About Us</a>
+            <a href="services.html">Our Services</a>
+            <a href="contact.html">Contact</a>
+          </div>
+        </div>
+
+        <div>
+          <h3>Policies</h3>
+          <div class="footer-links">
+            <a href="terms-and-conditions.html">Terms &amp; Conditions</a>
+            <a href="privacy-policy.html">Privacy Policy</a>
+          </div>
+        </div>
+
+        <div class="footer-brand">
+          <a class="brand" href="index.html" aria-label="RSS Inc. Home">
+            <span class="brand-mark" aria-hidden="true">
+              <img src="images/logo.png" alt="">
+            </span>
+            <span class="brand-copy">
+              <strong>RSS Inc.</strong>
+              <small>Legal | Regulatory | Compliance</small>
+            </span>
+          </a>
+          <span class="detail-label">Professional Information</span>
+          <div class="detail-stack">
+            <p>Registration Number: 2024/622929/21</p>
+            <p>Legal Practice Number: F72676</p>
+          </div>
+        </div>
+      </div>
+      <div class="container-wide footer-bottom">
+        <p>&copy; 2024 RSS Inc. All Rights Reserved.</p>
+      </div>
+    </footer>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="script.js"></script>
+  <script>
+    const downloadButtonMarkup = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> Download as PDF';
+
+    async function prepareExportContext() {
+      if (document.fonts && document.fonts.ready) {
+        try {
+          await document.fonts.ready;
+        } catch (error) {
+          console.error('Fonts failed to load before PDF export.', error);
+        }
+      }
+
+      const images = Array.from(document.images).filter(img => !img.complete);
+      if (images.length) {
+        await Promise.all(images.map(img => new Promise(resolve => {
+          img.addEventListener('load', resolve, { once: true });
+          img.addEventListener('error', resolve, { once: true });
+        })));
+      }
+    }
+
+    function collectExportBlocks(container) {
+      const blocks = [];
+      const headings = container.querySelectorAll('h2, h3, .clause, .clause-sub, .clause-deep, p');
+
+      headings.forEach(node => {
+        if (node.closest('.pdf-download-wrap')) {
+          return;
+        }
+
+        if (node.matches('h2')) {
+          blocks.push({ type: 'h2', text: node.textContent.trim() });
+          return;
+        }
+
+        if (node.matches('h3')) {
+          blocks.push({ type: 'h3', text: node.textContent.trim() });
+          return;
+        }
+
+        if (node.matches('p')) {
+          const text = node.textContent.trim();
+          if (text) {
+            blocks.push({ type: node.classList.contains('legal-effective') ? 'meta' : 'p', text });
+          }
+          return;
+        }
+
+        const num = node.querySelector('.num')?.textContent.trim() || '';
+        const valueParts = Array.from(node.children)
+          .filter(child => !child.classList.contains('num'))
+          .map(child => child.textContent.trim())
+          .filter(Boolean);
+        const value = valueParts.join(' ');
+        const text = [num, value].filter(Boolean).join(' ');
+        if (text) {
+          blocks.push({
+            type: node.classList.contains('clause-deep') ? 'clause-deep' : node.classList.contains('clause-sub') ? 'clause-sub' : 'clause',
+            text
+          });
+        }
+      });
+
+      return blocks;
+    }
+
+    function renderBlocksToPdf(pdf, blocks, title, subtitle) {
+      const pageWidth = pdf.internal.pageSize.getWidth();
+      const pageHeight = pdf.internal.pageSize.getHeight();
+      const marginX = 16;
+      const marginTop = 18;
+      const maxWidth = pageWidth - (marginX * 2);
+      let cursorY = marginTop;
+
+      const ensureSpace = needed => {
+        if (cursorY + needed <= pageHeight - 16) {
+          return;
+        }
+        pdf.addPage();
+        cursorY = marginTop;
+      };
+
+      pdf.setTextColor(13, 27, 46);
+      pdf.setFont('times', 'bold');
+      pdf.setFontSize(20);
+      const titleLines = pdf.splitTextToSize(title, maxWidth);
+      ensureSpace(titleLines.length * 8);
+      pdf.text(titleLines, marginX, cursorY);
+      cursorY += titleLines.length * 8;
+
+      pdf.setFont('helvetica', 'normal');
+      pdf.setFontSize(9);
+      pdf.setTextColor(130, 130, 130);
+      pdf.text(subtitle, marginX, cursorY);
+      cursorY += 10;
+
+      blocks.forEach(block => {
+        const style = {
+          h2: { font: 'times', weight: 'bold', size: 16, gapBefore: 6, gapAfter: 5, color: [13, 27, 46], indent: 0 },
+          h3: { font: 'helvetica', weight: 'bold', size: 10, gapBefore: 4, gapAfter: 4, color: [13, 27, 46], indent: 0 },
+          meta: { font: 'helvetica', weight: 'italic', size: 9, gapBefore: 0, gapAfter: 4, color: [130, 130, 130], indent: 0 },
+          p: { font: 'helvetica', weight: 'normal', size: 10, gapBefore: 0, gapAfter: 4, color: [26, 26, 46], indent: 0 },
+          clause: { font: 'helvetica', weight: 'normal', size: 10, gapBefore: 0, gapAfter: 3.5, color: [26, 26, 46], indent: 0 },
+          'clause-sub': { font: 'helvetica', weight: 'normal', size: 10, gapBefore: 0, gapAfter: 3.5, color: [26, 26, 46], indent: 8 },
+          'clause-deep': { font: 'helvetica', weight: 'normal', size: 10, gapBefore: 0, gapAfter: 3.5, color: [26, 26, 46], indent: 16 }
+        }[block.type];
+
+        cursorY += style.gapBefore;
+        pdf.setFont(style.font, style.weight);
+        pdf.setFontSize(style.size);
+        pdf.setTextColor(style.color[0], style.color[1], style.color[2]);
+
+        const lines = pdf.splitTextToSize(block.text, maxWidth - style.indent);
+        const lineHeight = style.size <= 9 ? 4.2 : 5;
+        ensureSpace(lines.length * lineHeight + style.gapAfter + 2);
+        pdf.text(lines, marginX + style.indent, cursorY);
+        cursorY += (lines.length * lineHeight) + style.gapAfter;
+      });
+    }
+
+    async function downloadPDF(button) {
+      const contentId = button.dataset.contentId;
+      const fileName = button.dataset.fileName;
+      const container = document.getElementById(contentId);
+
+      if (!container) {
+        console.error('PDF content container not found:', contentId);
+        return;
+      }
+
+      if (!window.jspdf || !window.jspdf.jsPDF) {
+        console.error('jsPDF failed to load.');
+        return;
+      }
+
+      button.disabled = true;
+      button.textContent = 'Generating…';
+
+      try {
+        await prepareExportContext();
+
+        const title = document.querySelector('.legal-hero h1')?.textContent.replace(/\s+/g, ' ').trim() || document.title;
+        const subtitle = document.querySelector('.legal-hero p')?.textContent.trim() || '';
+        const blocks = collectExportBlocks(container);
+        const pdf = new window.jspdf.jsPDF({ unit: 'mm', format: 'a4', orientation: 'portrait' });
+
+        renderBlocksToPdf(pdf, blocks, title, subtitle);
+        pdf.save(fileName);
+      } catch (error) {
+        console.error('Failed to generate PDF.', error);
+      } finally {
+        button.disabled = false;
+        button.innerHTML = downloadButtonMarkup;
+      }
+    }
+
+    /* ── TOC: smooth scroll (centered) + active highlight ── */
+    (function () {
+      const tocLinks = document.querySelectorAll('.legal-toc a[href^="#"]');
+      const sections = Array.from(tocLinks).map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+
+      function setActive() {
+        let current = null;
+        const offset = window.innerHeight / 2;
+        sections.forEach(sec => {
+          if (sec.getBoundingClientRect().top <= offset) current = sec;
+        });
+        tocLinks.forEach(a => {
+          a.classList.toggle('active', current && a.getAttribute('href') === '#' + current.id);
+        });
+      }
+
+      window.addEventListener('scroll', setActive, { passive: true });
+      setActive();
+
+      /* smooth scroll — top of section with header offset */
+      tocLinks.forEach(a => {
+        a.addEventListener('click', function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute('href'));
+          if (!target) return;
+          const headerHeight = document.querySelector('.site-header')?.offsetHeight || 80;
+          const top = target.getBoundingClientRect().top + window.scrollY - headerHeight - 24;
+          window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' });
+        });
+      });
+
+      const downloadButton = document.querySelector('.pdf-download-btn');
+      if (downloadButton) {
+        downloadButton.addEventListener('click', function () {
+          downloadPDF(downloadButton);
+        });
+      }
+
+      /* mobile toggle */
+      const btn = document.querySelector('.legal-toc-toggle');
+      const toc = document.getElementById('legal-toc-nav');
+      if (btn && toc) {
+        btn.addEventListener('click', function () {
+          const open = toc.classList.toggle('open');
+          btn.setAttribute('aria-expanded', open);
+          btn.querySelector('svg').style.transform = open ? 'rotate(180deg)' : '';
+        });
+      }
+    })();
+  </script>
+</body>
+</html>
