@@ -32,6 +32,11 @@
   // Detect whether the element under the cursor sits on a dark background.
   // Strategy: class-based check first (handles gradients), then luminance walk for solid colors.
   function hasDarkBackground(el) {
+    const forcedSurface = el.closest && el.closest('[data-cursor-surface]');
+    if (forcedSurface) {
+      return forcedSurface.getAttribute('data-cursor-surface') === 'dark';
+    }
+
     // 1. Check for known dark containers (works even when background is a gradient)
     if (el.closest && el.closest(DARK_SELECTORS)) return true;
 

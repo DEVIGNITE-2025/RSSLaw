@@ -1746,6 +1746,10 @@ p {
   gap: 14px;
 }
 
+.cms-login-form input {
+  caret-color: var(--accent);
+}
+
 .cms-login-form input[aria-invalid="true"] {
   border-color: rgba(151, 116, 67, 0.9);
   box-shadow: 0 0 0 3px rgba(151, 116, 67, 0.14);
